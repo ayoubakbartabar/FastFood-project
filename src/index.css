@@ -27,19 +27,28 @@
     /* Font */
     --font-jost: 'Jost', sans-serif;
 
-    /* Colors */
+    /* Base Colors */
     --color-white: #ffffff;
     --color-black: #000000;
     --color-primary: #cd9b33;
 
+    /* Grays */
     --color-gray-dark: #2c2f3a;
-    /* Dark gray (e.g. cart background) */
     --color-gray: #666666;
-    /* Medium gray */
     --color-gray-light: #c7c7c7;
-    /* Light gray */
     --color-gray-very-light: #777777;
-    /* Very light gray */
+
+    /* Custom Colors */
+    --heading: #010f1c;
+    --paragraph: #8a9197;
+    --secondary: #ffe9b0;
+    --background: #fff8e6;
+    --secondary-text: #b0b5b9;
+    --highlight: #ffb700;
+    --border: #e6e7e8;
+    --tertiary: #ecf1f0;
+    --white-90: #ffffffe6;
+    --transparent: transparent;
 }
 
 /* ------------------------
