@@ -1,0 +1,9 @@
+.menu-item {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.menu-item.active {
+    color: #ff6600;
+    font-weight: bold;
+}
