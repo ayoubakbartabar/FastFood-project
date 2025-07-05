@@ -1,0 +1,59 @@
+/* ------------------------
+   Font Face Declarations
+-------------------------*/
+
+/* Jost Variable Font - Normal */
+@font-face {
+    font-family: 'Jost';
+    src: url('/font/Jost/Jost-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Jost Variable Font - Italic */
+@font-face {
+    font-family: 'Jost';
+    src: url('/font/Jost/Jost-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: 100 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* ------------------------
+   Root Variables
+-------------------------*/
+:root {
+    /* Font */
+    --font-jost: 'Jost', sans-serif;
+
+    /* Colors */
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-primary: #cd9b33;
+
+    --color-gray-dark: #2c2f3a;
+    /* Dark gray (e.g. cart background) */
+    --color-gray: #666666;
+    /* Medium gray */
+    --color-gray-light: #c7c7c7;
+    /* Light gray */
+    --color-gray-very-light: #777777;
+    /* Very light gray */
+}
+
+/* ------------------------
+   Base Styling
+-------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-jost);
+    color: var(--color-black);
+    line-height: 1.6;
+    background-color: var(--color-white);
+}
