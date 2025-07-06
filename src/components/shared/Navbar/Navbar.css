@@ -1,8 +1,12 @@
 .navbar-bg {
-    background-color: transparent;
+    position: fixed;
+    top: 0;
     width: 100%;
-    position: relative;
     z-index: 100;
+    background: transparent;
+    backdrop-filter: blur(6px);
+    color: white;
+    transition: background 0.3s ease;
 }
 
 .navbar-section {
@@ -55,6 +59,7 @@
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    color: white;
 }
 
 .search-icon,
@@ -132,18 +137,4 @@
 .mobile-menu .menu-item a.active {
     color: var(--highlight);
     font-weight: var(--font-weight-bold);
-}
-
-@media (max-width: 920px) {
-    .desktop-order-now {
-        display: none;
-    }
-
-    .hamburger-btn {
-        display: block;
-    }
-
-    .desktop-menu {
-        display: none;
-    }
 }
