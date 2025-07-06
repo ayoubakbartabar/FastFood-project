@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { LuSearch, LuShoppingBasket } from "react-icons/lu";
-import { MdArrowRightAlt } from "react-icons/md";
 import { FaHamburger } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import "./Navbar.css";
+import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -66,10 +66,7 @@ export default function Navbar() {
             <LuShoppingBasket className="shop-basket-icon" />
           </button>
 
-          <button className="order-now-btn desktop-order-now">
-            order now
-            <MdArrowRightAlt />
-          </button>
+          <OrderNowBtn variant="desktop" />
 
           <button
             className="hamburger-btn"
@@ -113,10 +110,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
-          <button className="order-now-btn mobile-order-now">
-            order now
-            <MdArrowRightAlt />
-          </button>
+          <OrderNowBtn variant="mobile" />
         </section>
       )}
     </div>
