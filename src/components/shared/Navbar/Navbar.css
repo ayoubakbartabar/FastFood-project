@@ -35,15 +35,14 @@
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-color);
-    transition: var(--transition);
-    position: relative;
     text-decoration: none;
+    position: relative;
+    transition: color 0.3s ease-in-out;
 }
 
 .menu-item a:hover,
 .menu-item a.active {
     color: var(--highlight);
-    font-weight: 600;
 }
 
 .navbar-btn-section {
@@ -137,4 +136,9 @@
 .mobile-menu .menu-item a.active {
     color: var(--highlight);
     font-weight: var(--font-weight-bold);
+}
+
+.mobile-menu .menu-item a {
+    position: relative;
+    transition: color 0.3s ease-in-out;
 }
