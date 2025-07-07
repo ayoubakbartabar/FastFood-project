@@ -1,4 +1,4 @@
-const SwiperSliderData = [
+const SwiperSliderdata = [
   {
     id: 1,
     image: "/image/661cbcd37d541eea8b29644a_combo icon.png",
@@ -49,4 +49,4 @@ const SwiperSliderData = [
   },
 ];
 
-export default SwiperSliderData;
+export default SwiperSliderdata;

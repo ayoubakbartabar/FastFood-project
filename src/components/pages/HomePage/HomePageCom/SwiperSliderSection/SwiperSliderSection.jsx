@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import "./SwiperSliderSection.css";
 
-import SwiperSliderData from "./SwiperSliderData.js";
+import SwiperSliderdata from "./SwiperSliderdata.js";
 
 export default function SwiperSliderSection() {
   return (
@@ -32,7 +32,7 @@ export default function SwiperSliderSection() {
             1280: { slidesPerView: 6 },
           }}
         >
-          {SwiperSliderData.map((item) => (
+          {SwiperSliderdata.map((item) => (
             <SwiperSlide key={item.id}>
               <a href={item.href} className="fade-slide">
                 <img src={item.image} alt={item.title} />
