@@ -3,6 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import "./HomeHeaderSection.css";
 import HomeHeaderSectionData from "./HomeHeaderSectionData";
 import OrderNowBtn from "../../../../shared/OrderNowBtn/OrderNowBtn.jsx";
+import {
+  FaFacebookF,
+  FaPinterestP,
+  FaTwitter,
+  FaYoutube,
+} from "react-icons/fa";
 
 export default function HomeHeaderSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -81,6 +87,21 @@ export default function HomeHeaderSection() {
             </motion.div>
           </AnimatePresence>
         </section>
+        {/* Social Icons INSIDE Section */}
+        <div className="home-header-social-local">
+          <a href="#" aria-label="Facebook" className="social-icon">
+            <FaFacebookF />
+          </a>
+          <a href="#" aria-label="Pinterest" className="social-icon">
+            <FaPinterestP />
+          </a>
+          <a href="#" aria-label="Twitter" className="social-icon">
+            <FaTwitter />
+          </a>
+          <a href="#" aria-label="YouTube" className="social-icon">
+            <FaYoutube />
+          </a>
+        </div>
       </div>
     </div>
   );
