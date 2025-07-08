@@ -46,7 +46,7 @@ export default function SwiperSliderSection() {
       {/* Grid Section for mobile screens */}
       <section className="mobile-grid">
         <div className="grid-wrapper">
-          {SwiperSliderData.map((item) => (
+          {SwiperSliderdata.map((item) => (
             <a href={item.href} className="fade-slide" key={item.id}>
               <img src={item.image} alt={item.title} />
               <h4>{item.title}</h4>
