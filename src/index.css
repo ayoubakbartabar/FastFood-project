@@ -49,6 +49,9 @@
     --tertiary: #ecf1f0;
     --white-90: #ffffffe6;
     --transparent: transparent;
+    --color-star-yellow: #fbbf24;
+    --color-star-light: #e5e7eb;
+    --color-star-half: linear-gradient(90deg, #fbbf24 50%, #e5e7eb 50%);
 }
 
 /* ------------------------

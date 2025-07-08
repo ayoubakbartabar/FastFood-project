@@ -7,6 +7,7 @@
     backdrop-filter: blur(6px);
     color: white;
     transition: background 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar-section {
