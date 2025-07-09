@@ -6,6 +6,7 @@ import HomeHeaderSection from "./HomePageCom/HomeHeaderSection/HomeHeaderSection
 import SwiperSliderSection from "./HomePageCom/SwiperSliderSection/SwiperSliderSection.jsx";
 import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSection.jsx";
 import HomeBannerSection from "./HomePageCom/HomeBannerSection/HomeBannerSection.jsx";
+import PopularItemsSection from "./HomePageCom/PopularItemsSection/PopularItemsSection.jsx";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
       <SwiperSliderSection />
       <BestSellingSection />
       <HomeBannerSection />
+      <PopularItemsSection />
       <Footer />
     </>
   );
