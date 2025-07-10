@@ -7,6 +7,7 @@ import SwiperSliderSection from "./HomePageCom/SwiperSliderSection/SwiperSliderS
 import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSection.jsx";
 import HomeBannerSection from "./HomePageCom/HomeBannerSection/HomeBannerSection.jsx";
 import PopularItemsSection from "./HomePageCom/PopularItemsSection/PopularItemsSection.jsx";
+import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection.jsx";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <BestSellingSection />
       <HomeBannerSection />
       <PopularItemsSection />
+      <RequestReservationSection />
       <Footer />
     </>
   );
