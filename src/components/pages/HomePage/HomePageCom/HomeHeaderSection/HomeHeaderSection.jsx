@@ -30,64 +30,72 @@ export default function HomeHeaderSection() {
       y: 0,
       transition: { duration: 0.7, ease: "easeOut" },
     },
-    exit: { opacity: 0, y: -20, transition: { duration: 0.5, ease: "easeIn" } },
+    exit: {
+      opacity: 0,
+      y: -20,
+      transition: { duration: 0.5, ease: "easeIn" },
+    },
   };
 
   return (
     <div className="home-header-bg">
       <div className="home-header-container">
         <section className="home-header-section">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              className="home-header-section-box"
-              variants={fadeSlideVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              {/* Left side with text content */}
-              <div className="header-left-side">
-                <h3 className="header-left-sub-title">{header}</h3>
-                <h1 className="header-left-title">{title}</h1>
-                <p className="header-left-paragraph">{description}</p>
-                <OrderNowBtn />
+          <div className="home-header-section-box">
+            <div className="header-left-side">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  variants={fadeSlideVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  className="header-left-content-wrapper"
+                >
+                  <h3 className="header-left-sub-title">{header}</h3>
+                  <h1 className="header-left-title">{title}</h1>
+                  <p className="header-left-paragraph">{description}</p>
+                  <OrderNowBtn />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            <div className="header-right-wrapper">
+              <div className="header-pagination-buttons">
+                {HomeHeaderSectionData.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`header-pagination-btn ${
+                      currentIndex === index ? "active" : ""
+                    }`}
+                    onClick={() => handleSelectItem(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
 
-              {/* Right side wrapper: image + pagination buttons */}
-              <div className="header-right-wrapper">
-                {/* Pagination on top in mobile, right side middle in desktop */}
-                <div className="header-pagination-buttons">
-                  {HomeHeaderSectionData.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`header-pagination-btn ${
-                        currentIndex === index ? "active" : ""
-                      }`}
-                      onClick={() => handleSelectItem(index)}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
-                </div>
-
-                <motion.img
-                  src={image}
-                  alt="fastfood"
-                  className="header-img"
-                  initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    rotate: currentIndex === 0 ? -6 : 0,
-                  }}
-                  exit={{ opacity: 0, scale: 0.8, rotate: 0 }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                />
+              <div className="header-img-wrapper">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentIndex}
+                    src={image}
+                    alt="fastfood"
+                    className="header-img"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{
+                      opacity: 1,
+                      scale: 1,
+                      rotate: currentIndex === 0 ? -6 : 0,
+                    }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                  />
+                </AnimatePresence>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          </div>
         </section>
-        {/* Social Icons INSIDE Section */}
+
         <div className="home-header-social-local">
           <a href="#" aria-label="Facebook" className="social-icon">
             <FaFacebookF />
