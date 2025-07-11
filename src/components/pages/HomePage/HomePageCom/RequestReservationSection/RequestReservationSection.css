@@ -3,7 +3,7 @@
 }
 
 .request-reservation {
-    padding: 5rem 2rem;
+    padding: 10rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -30,6 +30,7 @@
 .reservation-info {
     color: var(--color-white);
     padding: 1rem;
+    margin-bottom: 10rem;
 }
 
 .reservation-subtitle {
@@ -53,8 +54,48 @@
     line-height: 1.7;
 }
 
+.reservation-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.reservation-image {
+    position: absolute;
+    top: 55px;
+    right: -30px;
+    width: min(40vw, 480px);
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
 
 /* Responsive Design */
+@media (max-width: 1364px) {
+    .request-reservation {
+        padding: 5rem 2rem;
+    }
+
+    .reservation-info {
+        margin-bottom: 0rem;
+    }
+
+    .reservation-image-wrapper,
+    .reservation-image {
+        display: none;
+    }
+
+}
+
 @media (max-width: 1024px) {
     .reservation-container {
         grid-template-columns: 1fr;
@@ -72,5 +113,10 @@
 
     .reservation-title {
         font-size: 1.5rem;
+    }
+
+    .reservation-image {
+        width: min(65vw, 280px);
+        margin: 1rem auto 0;
     }
 }

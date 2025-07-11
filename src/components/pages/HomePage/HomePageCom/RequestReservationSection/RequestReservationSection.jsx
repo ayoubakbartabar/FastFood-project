@@ -23,6 +23,13 @@ export default function RequestReservationSection() {
               mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam
               libero vitae erat.
             </p>
+            <div className="reservation-image-wrapper">
+              <img
+                className="reservation-image"
+                src="/image/661ccbf8ce5a04ced085a82f_image.png"
+                alt="Restaurant table"
+              />
+            </div>
           </div>
         </div>
       </section>
