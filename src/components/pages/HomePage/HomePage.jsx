@@ -8,6 +8,7 @@ import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSect
 import HomeBannerSection from "./HomePageCom/HomeBannerSection/HomeBannerSection.jsx";
 import PopularItemsSection from "./HomePageCom/PopularItemsSection/PopularItemsSection.jsx";
 import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection.jsx";
+import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection.jsx";
 
 export default function HomePage() {
   return (
@@ -19,6 +20,7 @@ export default function HomePage() {
       <HomeBannerSection />
       <PopularItemsSection />
       <RequestReservationSection />
+      <WhyChooseUsSection />
       <Footer />
     </>
   );
