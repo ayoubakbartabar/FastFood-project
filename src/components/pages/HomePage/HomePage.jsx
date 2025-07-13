@@ -10,6 +10,7 @@ import PopularItemsSection from "./HomePageCom/PopularItemsSection/PopularItemsS
 import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection.jsx";
 import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection.jsx";
 import TestimonialCarouselSection from "./HomePageCom/TestimonialCarouselSection/TestimonialCarouselSection.jsx";
+import HomePageBlogSection from "./HomePageCom/HomePageBlogSection/HomePageBlogSection.jsx";
 
 export default function HomePage() {
   return (
@@ -23,6 +24,7 @@ export default function HomePage() {
       <RequestReservationSection />
       <WhyChooseUsSection />
       <TestimonialCarouselSection />
+      <HomePageBlogSection />
       <Footer />
     </>
   );
