@@ -1,0 +1,11 @@
+.location-section {
+    width: 100%;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .location-section {
+        padding: 1rem 0.5rem;
+    }
+}
