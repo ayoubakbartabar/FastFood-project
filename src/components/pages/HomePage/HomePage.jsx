@@ -12,6 +12,7 @@ import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSect
 import TestimonialCarouselSection from "./HomePageCom/TestimonialCarouselSection/TestimonialCarouselSection.jsx";
 import HomePageBlogSection from "./HomePageCom/HomePageBlogSection/HomePageBlogSection.jsx";
 import LocationSection from "./HomePageCom/LocationSection/LocationSection.jsx";
+import SocialSection from "./SocialSection/SocialSection.jsx";
 
 export default function HomePage() {
   return (
@@ -27,6 +28,7 @@ export default function HomePage() {
       <TestimonialCarouselSection />
       <HomePageBlogSection />
       <LocationSection />
+      <SocialSection />
       <Footer />
     </>
   );
