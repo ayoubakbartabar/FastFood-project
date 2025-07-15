@@ -1,7 +1,6 @@
 import React from "react";
 import "./HomePage.css";
 import Navbar from "../../shared/Navbar/Navbar.jsx";
-import Footer from "../../shared/Footer/Footer.jsx";
 import HomeHeaderSection from "./HomePageCom/HomeHeaderSection/HomeHeaderSection.jsx";
 import SwiperSliderSection from "./HomePageCom/SwiperSliderSection/SwiperSliderSection.jsx";
 import BestSellingSection from "./HomePageCom/BestSellingSection/BestSellingSection.jsx";
@@ -12,7 +11,8 @@ import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSect
 import TestimonialCarouselSection from "../../shared/TestimonialCarouselSection/TestimonialCarouselSection.jsx";
 import HomePageBlogSection from "./HomePageCom/HomePageBlogSection/HomePageBlogSection.jsx";
 import LocationSection from "./HomePageCom/LocationSection/LocationSection.jsx";
-import SocialSection from "./HomePageCom/SocialSection/SocialSection.jsx";
+import SocialSection from "../../shared/SocialSection/SocialSection.jsx";
+import Footer from "../../shared/Footer/Footer.jsx";
 
 export default function HomePage() {
   return (
