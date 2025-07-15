@@ -141,7 +141,7 @@
     z-index: 2;
 }
 
-.social-icon {
+.home-header-social-icon {
     color: var(--color-white);
     background-color: rgba(255, 255, 255, 0.1);
     padding: 0.6rem;
@@ -154,7 +154,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.social-icon:hover {
+.home-header-social-icon:hover {
     background-color: var(--color-primary);
     transform: translateY(-2px) scale(1.1);
     box-shadow: 0 6px 12px var(--color-primary);

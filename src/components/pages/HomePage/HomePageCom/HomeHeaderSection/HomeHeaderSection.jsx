@@ -97,16 +97,16 @@ export default function HomeHeaderSection() {
         </section>
 
         <div className="home-header-social-local">
-          <a href="#" aria-label="Facebook" className="social-icon">
+          <a href="#" aria-label="Facebook" className="home-header-social-icon">
             <FaFacebookF />
           </a>
-          <a href="#" aria-label="Pinterest" className="social-icon">
+          <a href="#" aria-label="Pinterest" className="home-header-social-icon">
             <FaPinterestP />
           </a>
-          <a href="#" aria-label="Twitter" className="social-icon">
+          <a href="#" aria-label="Twitter" className="home-header-social-icon">
             <FaTwitter />
           </a>
-          <a href="#" aria-label="YouTube" className="social-icon">
+          <a href="#" aria-label="YouTube" className="home-header-social-icon">
             <FaYoutube />
           </a>
         </div>
