@@ -9,10 +9,10 @@ import HomeBannerSection from "./HomePageCom/HomeBannerSection/HomeBannerSection
 import PopularItemsSection from "./HomePageCom/PopularItemsSection/PopularItemsSection.jsx";
 import RequestReservationSection from "./HomePageCom/RequestReservationSection/RequestReservationSection.jsx";
 import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection.jsx";
-import TestimonialCarouselSection from "./HomePageCom/TestimonialCarouselSection/TestimonialCarouselSection.jsx";
+import TestimonialCarouselSection from "../../shared/TestimonialCarouselSection/TestimonialCarouselSection.jsx";
 import HomePageBlogSection from "./HomePageCom/HomePageBlogSection/HomePageBlogSection.jsx";
 import LocationSection from "./HomePageCom/LocationSection/LocationSection.jsx";
-import SocialSection from "./SocialSection/SocialSection.jsx";
+import SocialSection from "./HomePageCom/SocialSection/SocialSection.jsx";
 
 export default function HomePage() {
   return (
