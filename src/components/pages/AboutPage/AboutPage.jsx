@@ -3,6 +3,7 @@ import "./AboutPage.css";
 import Navbar from "../../shared/Navbar/Navbar";
 import PageHeader from "../../shared/PageHeader/PageHeader";
 import BrandIntroSection from "./AboutPageCom/BrandIntroSection/BrandIntroSection";
+import VideoSection from "./AboutPageCom/VideoSection/VideoSection";
 
 export default function AboutPage() {
   return (
@@ -10,6 +11,7 @@ export default function AboutPage() {
       <Navbar />
       <PageHeader title={"About us"} />
       <BrandIntroSection />
+      <VideoSection />
     </>
   );
 }
