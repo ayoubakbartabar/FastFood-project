@@ -1,0 +1,60 @@
+.our-commitments-section {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
+    font-family: var(--font-jost);
+}
+
+.our-commitments-top {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.our-commitments-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--heading);
+}
+
+.our-commitments-paragraph {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--paragraph);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.our-commitments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem 2rem;
+    align-items: start;
+    justify-items: center;
+}
+
+.our-commitments-box {
+    text-align: center;
+    padding: 1rem;
+}
+
+.our-commitments-box-image {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.our-commitments-box-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--heading);
+}
+
+.our-commitments-box-paragraph {
+    color: var(--paragraph);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 auto;
+}
