@@ -7,6 +7,7 @@ import VideoSection from "./AboutPageCom/VideoSection/VideoSection";
 import OurCommitmentsSection from "./AboutPageCom/OurCommitmentsSection/OurCommitmentsSection";
 import QuickStatsSection from "./AboutPageCom/QuickStatsSection/QuickStatsSection";
 import OurChefSection from "./AboutPageCom/OurChefSection/OurChefSection";
+import FAQSection from "./AboutPageCom/FAQSection/FAQSection";
 
 export default function AboutPage() {
   return (
@@ -18,6 +19,7 @@ export default function AboutPage() {
       <OurCommitmentsSection />
       <QuickStatsSection />
       <OurChefSection />
+      <FAQSection />
     </>
   );
 }
