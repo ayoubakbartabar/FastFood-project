@@ -12,23 +12,47 @@ import OurChefData from "./OurChefData";
 import "./OurChefSection.css";
 
 export default function OurChefSection() {
+  // State to track the starting index of visible chefs
   const [startIndex, setStartIndex] = useState(0);
+  // State to manage the current animation class for sliding effect
+  const [animationClass, setAnimationClass] = useState("");
+
   const ITEMS_PER_PAGE = 3;
+  const totalItems = OurChefData.length;
+
+  // Calculate the chefs that are currently visible based on startIndex
   const visibleChefs = OurChefData.slice(
     startIndex,
     startIndex + ITEMS_PER_PAGE
   );
 
-  const prevSlide = () => {
-    if (startIndex >= ITEMS_PER_PAGE) {
-      setStartIndex(startIndex - ITEMS_PER_PAGE);
-    }
-  };
+  // Function to handle slide animation and update visible chefs
+  const handleSlide = (direction) => {
+    // 1. Add slide-out animation class based on direction
+    setAnimationClass(`slide-out-${direction}`);
 
-  const nextSlide = () => {
-    if (startIndex + ITEMS_PER_PAGE < OurChefData.length) {
-      setStartIndex(startIndex + ITEMS_PER_PAGE);
-    }
+    setTimeout(() => {
+      // 2. Calculate new start index based on slide direction and wrap around
+      const newIndex =
+        direction === "left"
+          ? startIndex - ITEMS_PER_PAGE < 0
+            ? totalItems - ITEMS_PER_PAGE
+            : startIndex - ITEMS_PER_PAGE
+          : startIndex + ITEMS_PER_PAGE >= totalItems
+          ? 0
+          : startIndex + ITEMS_PER_PAGE;
+
+      // Update the start index state to show new set of chefs
+      setStartIndex(newIndex);
+
+      // 3. Add slide-in animation class from opposite direction
+      setAnimationClass(`slide-in-${direction}`);
+    }, 300);
+
+    // 4. Clear animation class after animation completes to reset styles
+    setTimeout(() => {
+      setAnimationClass("");
+    }, 600);
   };
 
   return (
@@ -42,10 +66,17 @@ export default function OurChefSection() {
           </p>
         </div>
         <div className="carousel-container">
-          <button className="arrow-btn left" onClick={prevSlide}>
+          {/* Left arrow button triggers slide to previous chefs */}
+          <button
+            className="arrow-btn left"
+            onClick={() => handleSlide("left")}
+          >
             <IoIosArrowBack />
           </button>
-          <div className="chef-cards">
+
+          {/* Container for chef cards with animation classes applied */}
+          <div className={`chef-cards ${animationClass}`}>
+            {/* Map over visible chefs and render individual cards */}
             {visibleChefs.map((chef) => (
               <div key={chef.id} className="chef-card">
                 <div className="chef-image-container">
@@ -58,18 +89,25 @@ export default function OurChefSection() {
                 <div className="chef-info">
                   <h3>{chef.name}</h3>
                   <p>{chef.role}</p>
+
+                  {/* Social media icons with specific color classes */}
                   <div className="social-icons">
-                    <FaFacebookF />
-                    <FaInstagram />
-                    <FaPinterestP />
-                    <FaTwitter />
-                    <FaYoutube />
+                    <FaFacebookF className="facebook" />
+                    <FaInstagram className="instagram" />
+                    <FaPinterestP className="pinterest" />
+                    <FaTwitter className="twitter" />
+                    <FaYoutube className="youtube" />
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <button className="arrow-btn right" onClick={nextSlide}>
+
+          {/* Right arrow button triggers slide to next chefs */}
+          <button
+            className="arrow-btn right"
+            onClick={() => handleSlide("right")}
+          >
             <IoIosArrowForward />
           </button>
         </div>
