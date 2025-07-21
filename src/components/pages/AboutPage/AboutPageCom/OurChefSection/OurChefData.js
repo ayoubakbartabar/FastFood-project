@@ -23,8 +23,7 @@ const OurChefData = [
     id: 4,
     name: "Courtney Henry",
     role: "Pasta Specialist",
-    image:
-      "/image/661e105aa3542c723fa34572_wepik-export-20240103130957IaVi%201-p-500.webp",
+    image: "/image/chef-image.webp",
   },
   {
     id: 5,
@@ -49,6 +48,12 @@ const OurChefData = [
     name: "Mark John",
     role: "Cuisine Specialist",
     image: "/image/661e153fd040d5c09a81a088_image-4.png",
+  },
+  {
+    id: 9,
+    name: "Albert Flores",
+    role: "Cuisine Specialist",
+    image: "/image/661e154069f1521b1617c7d6_wepik-export-20240123122618sLjm 1.png",
   },
 ];
 
