@@ -9,6 +9,8 @@ import QuickStatsSection from "./AboutPageCom/QuickStatsSection/QuickStatsSectio
 import OurChefSection from "./AboutPageCom/OurChefSection/OurChefSection";
 import FAQSection from "./AboutPageCom/FAQSection/FAQSection";
 import TestimonialCarouselSection from "../../shared/TestimonialCarouselSection/TestimonialCarouselSection";
+import SocialSection from "../../shared/SocialSection/SocialSection";
+import Footer from "../../shared/Footer/Footer";
 
 export default function AboutPage() {
   return (
@@ -22,6 +24,8 @@ export default function AboutPage() {
       <OurChefSection />
       <FAQSection />
       <TestimonialCarouselSection />
+      <SocialSection />
+      <Footer />
     </>
   );
 }
