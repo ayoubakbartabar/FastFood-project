@@ -8,6 +8,7 @@ import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const mobileMenuRef = useRef(null);
 
   const navbarMenus = [
@@ -18,6 +19,7 @@ export default function Navbar() {
     { id: 5, title: "Contact Us", href: "/contact-us" },
   ];
 
+  // Close mobile menu when clicking outside
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (
@@ -33,15 +35,29 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, [isMobileMenuOpen]);
 
+  // Close search input when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isSearchOpen && !event.target.closest(".search-container")) {
+        setIsSearchOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isSearchOpen]);
+
   return (
     <div className="navbar-bg">
       <section className="navbar-section">
+        {/* Logo */}
         <img
           className="navbar-logo"
           src="/image/661caca505c900f7a61a73ce_logo (1).png"
           alt="logo"
         />
 
+        {/* Desktop navigation menu */}
         <ul className="menu-list desktop-menu">
           {navbarMenus.map((item) => (
             <li key={item.id} className="menu-item">
@@ -57,17 +73,34 @@ export default function Navbar() {
           ))}
         </ul>
 
+        {/* Buttons section */}
         <div className="navbar-btn-section">
-          <button className="search-btn" aria-label="Search">
-            <LuSearch className="search-icon" />
-          </button>
+          {/* Search icon with expanding input */}
+          <div className={`search-container ${isSearchOpen ? "open" : ""}`}>
+            <button
+              className="search-btn"
+              aria-label="Search"
+              onClick={() => setIsSearchOpen((prev) => !prev)}
+            >
+              <LuSearch className="search-icon" />
+            </button>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search-input-box"
+              autoFocus
+            />
+          </div>
 
+          {/* Shopping basket */}
           <button className="shop-basket-btn" aria-label="Shopping basket">
             <LuShoppingBasket className="shop-basket-icon" />
           </button>
 
+          {/* Order now button */}
           <OrderNowBtn variant="desktop" />
 
+          {/* Mobile menu button */}
           <button
             className="hamburger-btn"
             onClick={() => setIsMobileMenuOpen(true)}
@@ -78,6 +111,7 @@ export default function Navbar() {
         </div>
       </section>
 
+      {/* Mobile menu */}
       {isMobileMenuOpen && (
         <section className="mobile-menu-section" ref={mobileMenuRef}>
           <div className="mobile-btn-section">
@@ -95,6 +129,7 @@ export default function Navbar() {
               <LuShoppingBasket className="mobile-shop-basket-icon" />
             </button>
           </div>
+
           <ul className="menu-list mobile-menu">
             {navbarMenus.map((item) => (
               <li key={item.id} className="menu-item">
@@ -110,6 +145,7 @@ export default function Navbar() {
               </li>
             ))}
           </ul>
+
           <OrderNowBtn variant="mobile" />
         </section>
       )}
