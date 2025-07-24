@@ -1,0 +1,14 @@
+.shop-main-wrapper {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .shop-main-wrapper {
+        flex-direction: column;
+        padding: 1rem;
+    }
+}
