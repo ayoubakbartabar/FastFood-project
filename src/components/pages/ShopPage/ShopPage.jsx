@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ShopPage.css";
 import Navbar from "../../shared/Navbar/Navbar.jsx";
 import PageHeader from "../../shared/PageHeader/PageHeader.jsx";
@@ -8,16 +8,22 @@ import SocialSection from "../../shared/SocialSection/SocialSection.jsx";
 import Footer from "../../shared/Footer/Footer.jsx";
 
 export default function ShopPage() {
+  // state for selected category
+  const [selectedCategory, setSelectedCategory] = useState("all");
+
   return (
     <>
       <Navbar />
       <PageHeader title={"Shop"} />
 
-      {/* WRAPPER FLEX: Aside + Product */}
       <div className="shop-main-wrapper">
-        <ShopAsideSection />
-        <ShopProductSection />
+        <ShopAsideSection
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <ShopProductSection selectedCategory={selectedCategory} />
       </div>
+
       <SocialSection />
       <Footer />
     </>
