@@ -9,7 +9,7 @@ const ServiceSectionData = [
   {
     id: 2,
     image: "/svg/6620ab3bf9e38f772400a07d_Group (1).svg",
-    title: "able Reservations",
+    title: "Table Reservations",
     paragraph:
       "Elevate events with Fastfood TNC catering, adding delectable touches to special moments.",
   },
