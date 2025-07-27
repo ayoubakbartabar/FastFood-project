@@ -3,7 +3,7 @@ import Navbar from "../../shared/Navbar/Navbar";
 import SocialSection from "../../shared/SocialSection/SocialSection";
 import Footer from "../../shared/Footer/Footer";
 import PageHeader from "../../shared/PageHeader/PageHeader";
-import ServiceSection from "./ServicesPageCom/ServiceSection/ServiceSection";
+import ServiceSection from "./ServicespageCom/ServiceSection/ServiceSection";
 
 export default function ServicesPage() {
   return (
