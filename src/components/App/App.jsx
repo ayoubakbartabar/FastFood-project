@@ -5,6 +5,7 @@ import HomePage from "../pages/HomePage/HomePage.jsx";
 import AboutPage from "../pages/AboutPage/AboutPage.jsx";
 import ShopPage from "../pages/ShopPage/ShopPage.jsx";
 import ServicesPage from "../pages/ServicesPage/ServicesPage.jsx";
+import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route path="/about" element={<AboutPage />} />
       <Route path="/shop" element={<ShopPage />} />
       <Route path="/service" element={<ServicesPage />} />
+      <Route path="/blog" element={<BlogPage />} />
     </Routes>
   );
 }
