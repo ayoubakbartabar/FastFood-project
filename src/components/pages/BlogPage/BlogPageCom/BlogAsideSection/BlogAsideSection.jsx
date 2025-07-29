@@ -1,9 +1,11 @@
-import React from 'react'
-import './BlogSliderSection.css'
-import PopularPost from './BlogAsideData'
+import React from "react";
+import "./BlogAsideSection.css";
+import PopularPostSection from "./PopularPostSection/PopularPostSection";
 
-export default function BlogSliderSection() {
+export default function BlogAsideSection() {
   return (
-    <div className='blog-aside-section'></div>
-  )
+    <div className="blog-layout-container">
+      <PopularPostSection />
+    </div>
+  );
 }
