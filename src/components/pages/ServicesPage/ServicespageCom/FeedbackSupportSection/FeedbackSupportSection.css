@@ -5,7 +5,6 @@
     align-items: center;
     justify-content: center;
     gap: 7rem;
-    background-color: #fff;
     max-width: 1600px;
     margin: 0 auto;
     margin-bottom: 8rem;
@@ -29,14 +28,15 @@
     object-fit: cover;
 }
 
-.image-1,
-.image-2 {
+.image-1 {
     width: 50%;
-    animation: floatLeftRight 4s ease-in-out infinite alternate;
+    animation: floatUpDown 4s ease-in-out infinite alternate;
 }
 
 .image-2 {
-    animation-delay: 1s;
+    width: 50%;
+    animation: floatDownUp 4s ease-in-out infinite alternate;
+    animation-delay: 3s;
 }
 
 .image-3 {
@@ -66,6 +66,26 @@
     font-size: 1rem;
     line-height: 1.8;
     color: #444;
+}
+
+@keyframes floatUpDown {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes floatDownUp {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(+15px);
+    }
 }
 
 @keyframes floatLeftRight {
