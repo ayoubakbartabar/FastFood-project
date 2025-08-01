@@ -12,10 +12,14 @@ export default function BlogPage() {
     <>
       <Navbar />
       <PageHeader title={"Blog"} />
-
       <div className="blog-main-wrapper">
-        <BlogAsideSection />
-        <BlogsContentSection />
+        <div className="blog-aside-section">
+          <BlogAsideSection />
+        </div>
+
+        <div className="blogs-content-section">
+          <BlogsContentSection />
+        </div>
       </div>
 
       <SocialSection />
