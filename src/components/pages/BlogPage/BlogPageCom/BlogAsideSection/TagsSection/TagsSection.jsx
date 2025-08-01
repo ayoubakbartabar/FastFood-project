@@ -10,16 +10,13 @@ export default function TagsSection() {
   return (
     <aside className="tags-aside">
       <h3 className="tags-title">Tags</h3>
-      
-
-      
+      <div className="tags-container">
         {uniqueTags.map((tag, index) => (
-          <span key={index} className="tag-item">
+          <button key={index} className="tag-item">
             {tag}
-          </span>
+          </button>
         ))}
-      
-
+      </div>
     </aside>
   );
 }
