@@ -17,7 +17,8 @@ export default function Navbar() {
     { id: 3, title: "Shop", href: "/shop" },
     { id: 4, title: "Service", href: "/service" },
     { id: 5, title: "Blog", href: "/blog" },
-    { id: 6, title: "Contact Us", href: "/contact-us" },
+    { id: 6, title: "Menu", href: "/menu" },
+    { id: 7, title: "Contact Us", href: "/contact-us" },
   ];
 
   // Close mobile menu when clicking outside

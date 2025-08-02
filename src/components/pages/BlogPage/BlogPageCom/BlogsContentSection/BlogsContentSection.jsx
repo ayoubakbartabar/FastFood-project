@@ -15,9 +15,8 @@ export default function BlogsContentSection() {
               className="blog-content-image"
             />
             <div className="blog-content-content">
-              <span className="blog-content-category">{item.category}</span>
+              <span className="blog-content-category">{item.categories}</span>
               <h3 className="blog-content-title">{item.title}</h3>
-              <p className="blog-content-paragraph">{item.paragraph}</p>
               <a href="#" className="read-more">
                 Read more <MdOutlineArrowRightAlt />
               </a>
