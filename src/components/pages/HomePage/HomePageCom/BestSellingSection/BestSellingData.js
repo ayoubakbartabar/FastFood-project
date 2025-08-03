@@ -5,6 +5,7 @@ const BestSellingData = [
     title: "Pasta with Tomatoes and Basil",
     star: 5,
     price: 30.0,
+    count: 10,
   },
   {
     id: 2,
@@ -13,6 +14,7 @@ const BestSellingData = [
     title: "Testy Beef Burger",
     star: 5,
     price: 41.0,
+    count: 13,
   },
   {
     id: 3,
@@ -20,6 +22,7 @@ const BestSellingData = [
     title: "Spinach Artichoke Spectacle",
     star: 5,
     price: 48.0,
+    count: 18,
   },
   {
     id: 4,
@@ -27,6 +30,7 @@ const BestSellingData = [
     title: "TNC Combo Meals",
     star: 4.5,
     price: 41.0,
+    count: 17,
   },
   {
     id: 5,
@@ -35,6 +39,7 @@ const BestSellingData = [
     title: "Tasty Mint Julep Cocktail",
     star: 3.5,
     price: 75.0,
+    count: 20,
   },
   {
     id: 6,
@@ -42,6 +47,7 @@ const BestSellingData = [
     title: "Lemon Ice Tea",
     star: 5,
     price: 15.0,
+    count: 8,
   },
   {
     id: 7,
@@ -49,6 +55,7 @@ const BestSellingData = [
     title: "Fried Chicken Legs",
     star: 5,
     price: 20.0,
+    count: 4,
   },
   {
     id: 8,
@@ -56,6 +63,7 @@ const BestSellingData = [
     title: "Philly Steak Sandwich",
     star: 4.5,
     price: 35.0,
+    count: 7,
   },
 ];
 
