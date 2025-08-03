@@ -5,6 +5,7 @@ import Footer from "../../shared/Footer/Footer";
 import PageHeader from "../../shared/PageHeader/PageHeader";
 import SocialSection from "../../shared/SocialSection/SocialSection";
 import SwiperSliderSection from "../../shared/SwiperSliderSection/SwiperSliderSection";
+import MenuListSection from "./MenuPageCom/MenuListSection/MenuListSection";
 
 export default function MenuPage() {
   return (
@@ -12,6 +13,7 @@ export default function MenuPage() {
       <Navbar />
       <PageHeader title={"Menu"} />
       <SwiperSliderSection />
+      <MenuListSection />
       <SocialSection />
       <Footer />
     </>
