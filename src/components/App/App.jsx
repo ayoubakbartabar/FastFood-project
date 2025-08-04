@@ -7,6 +7,7 @@ import ShopPage from "../pages/ShopPage/ShopPage.jsx";
 import ServicesPage from "../pages/ServicesPage/ServicesPage.jsx";
 import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 import MenuPage from "../pages/MenuPage/MenuPage.jsx";
+import ContactUsPage from "../pages/ContactUsPage/ContactUsPage.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/service" element={<ServicesPage />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/menu" element={<MenuPage />} />
+      <Route path="/contact-us" element={<ContactUsPage />} />
     </Routes>
   );
 }
