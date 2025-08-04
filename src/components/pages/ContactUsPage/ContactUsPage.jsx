@@ -4,12 +4,14 @@ import Navbar from "../../shared/Navbar/Navbar";
 import Footer from "../../shared/Footer/Footer";
 import PageHeader from "../../shared/PageHeader/PageHeader";
 import SocialSection from "../../shared/SocialSection/SocialSection";
+import JoinUsSection from "./ContactUsPageCom/JoinUsSection/JoinUsSection";
 
 export default function ContactUsPage() {
   return (
     <>
       <Navbar />
       <PageHeader title={"Contact Us"} />
+      <JoinUsSection />
       <SocialSection />
       <Footer />
     </>
