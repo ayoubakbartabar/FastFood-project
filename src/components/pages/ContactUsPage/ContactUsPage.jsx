@@ -8,7 +8,10 @@ import SocialSection from "../../shared/SocialSection/SocialSection";
 export default function ContactUsPage() {
   return (
     <>
-
+      <Navbar />
+      <PageHeader title={"Contact Us"} />
+      <SocialSection />
+      <Footer />
     </>
   );
 }
