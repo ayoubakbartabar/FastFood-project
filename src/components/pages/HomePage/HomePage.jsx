@@ -10,7 +10,7 @@ import RequestReservationSection from "./HomePageCom/RequestReservationSection/R
 import WhyChooseUsSection from "./HomePageCom/WhyChooseUsSection/WhyChooseUsSection.jsx";
 import TestimonialCarouselSection from "../../shared/TestimonialCarouselSection/TestimonialCarouselSection.jsx";
 import HomePageBlogSection from "./HomePageCom/HomePageBlogSection/HomePageBlogSection.jsx";
-import LocationSection from "./HomePageCom/LocationSection/LocationSection.jsx";
+import LocationSection from "../../shared/LocationSection/LocationSection.jsx";
 import SocialSection from "../../shared/SocialSection/SocialSection.jsx";
 import Footer from "../../shared/Footer/Footer.jsx";
 
