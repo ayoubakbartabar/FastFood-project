@@ -9,6 +9,7 @@
     align-items: center;
     max-width: 1600px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .reservation-container {
@@ -78,6 +79,29 @@
     transition: all 0.3s ease;
 }
 
+/* Fade and slide from left */
+.animate-slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-slide-in-left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade and slide from right */
+.animate-slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-slide-in-right.show {
+    opacity: 1;
+    transform: translateX(0);
+}
 
 /* Responsive Design */
 @media (max-width: 1364px) {

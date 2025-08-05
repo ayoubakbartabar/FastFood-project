@@ -1,16 +1,56 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import RequestReservationForm from "./RequestReservationForm";
 import "./RequestReservationSection.css";
 
 export default function RequestReservationSection() {
+  const formRef = useRef(null);
+  const infoRef = useRef(null);
+  const [visible, setVisible] = useState({ form: false, info: false });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === formRef.current && entry.isIntersecting) {
+            setVisible((prev) => ({ ...prev, form: true }));
+          }
+          if (entry.target === infoRef.current && entry.isIntersecting) {
+            setVisible((prev) => ({ ...prev, info: true }));
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    if (formRef.current) observer.observe(formRef.current);
+    if (infoRef.current) observer.observe(infoRef.current);
+
+    return () => {
+      if (formRef.current) observer.unobserve(formRef.current);
+      if (infoRef.current) observer.unobserve(infoRef.current);
+    };
+  }, []);
+
   return (
     <div className="request-reservation-bg">
       <section className="request-reservation">
         <div className="reservation-container">
-          <div className="reservation-form">
+          <div
+            ref={formRef}
+            className={`reservation-form animate-slide-in-left ${
+              visible.form ? "show" : ""
+            }`}
+          >
             <RequestReservationForm />
           </div>
-          <div className="reservation-info">
+          <div
+            ref={infoRef}
+            className={`reservation-info animate-slide-in-right ${
+              visible.info ? "show" : ""
+            }`}
+          >
             <span className="reservation-subtitle">Reserve your table</span>
             <h2 className="reservation-title">
               Elevate Your Dining <br />
