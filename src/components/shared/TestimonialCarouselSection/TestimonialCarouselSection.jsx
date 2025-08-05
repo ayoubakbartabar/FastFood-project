@@ -10,15 +10,18 @@ export default function TestimonialCarouselSection() {
   // How many cards should be visible at the current viewport?
   const [cardsPerView, setCardsPerView] = useState(getCardsPerView());
   const intervalRef = useRef(null);
+  // animation
+  const topRef = useRef(null);
+  const [visible, setVisible] = useState(false);
 
   const TOTAL = TestimonialCarouselData.length;
 
   // helpers
   function getCardsPerView() {
     const width = window.innerWidth;
-    if (width < 768) return 1; // mobile
-    if (width < 1024) return 2; // tablet
-    return 3; // desktop
+    if (width < 768) return 1;
+    if (width < 1024) return 2;
+    return 3;
   }
 
   const buildVisible = () =>
@@ -28,7 +31,6 @@ export default function TestimonialCarouselSection() {
     });
 
   const goNext = () => setStartIndex((p) => (p + cardsPerView) % TOTAL);
-
   const goPrev = () => setStartIndex((p) => (p - cardsPerView + TOTAL) % TOTAL);
 
   //effects
@@ -36,7 +38,7 @@ export default function TestimonialCarouselSection() {
   useEffect(() => {
     intervalRef.current = setInterval(goNext, 3000);
     return () => clearInterval(intervalRef.current);
-  }, [cardsPerView]); // restart timer if cardsPerView changes
+  }, [cardsPerView]);
 
   // Update cardsPerView on resize
   useEffect(() => {
@@ -45,10 +47,31 @@ export default function TestimonialCarouselSection() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect(); 
+        }
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+    if (topRef.current) {
+      observer.observe(topRef.current);
+    }
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="testimonial-carousel-bg">
       <section className="testimonial-carousel-section">
-        <div className="testimonial-top">
+        <div
+          className={`testimonial-top ${visible ? "slide-up-fade-in" : ""}`}
+          ref={topRef}
+        >
           <h1 className="testimonial-title">Testimonials</h1>
           <p className="testimonial-paragraph">
             Elevating Your Dining Experience
