@@ -1,12 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./HomePageBlogSection.css";
 import HomePageBlogData from "./HomePageBlogData.js";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 
 export default function HomePageBlogSection() {
+  const [visible, setVisible] = useState(false);
+  const topRef = useRef(null);
+
+  useEffect(() => {
+    const onScroll = () => {
+      if (!topRef.current) return;
+      const rect = topRef.current.getBoundingClientRect();
+
+      if (rect.top < window.innerHeight * 0.85) {
+        setVisible(true);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <div className="home-page-blog-bg">
-      <section className="home-page-blog-section">
+      <section
+        className={`home-page-blog-section ${visible ? "slide-up" : ""} `}
+        ref={topRef}
+      >
         <div className="home-page-blog-top">
           <h1 className="home-page-blog-title">Fastfood TNC Blog</h1>
           <p className="home-page-blog-paragraph">

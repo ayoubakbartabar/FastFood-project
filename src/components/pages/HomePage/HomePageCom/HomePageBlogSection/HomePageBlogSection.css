@@ -83,6 +83,23 @@
     transform: translateX(4px);
 }
 
+@keyframes slide-up-fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-up {
+    animation: slide-up-fade-in 2s ease forwards;
+}
+
+
 @media (max-width: 768px) {
     .home-page-blog-title {
         font-size: 2rem;
