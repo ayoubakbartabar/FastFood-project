@@ -4,11 +4,7 @@
     padding: 2rem 1rem;
     background-color: #fff;
     overflow: hidden;
-}
-
-.home-banner-section>* {
-    margin: 0;
-    padding: 0;
+    gap: 1rem;
 }
 
 .banner-image {
@@ -16,6 +12,14 @@
     height: auto;
     object-fit: cover;
     display: block;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease-out;
+}
+
+.banner-image.show {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 @media (max-width: 768px) {

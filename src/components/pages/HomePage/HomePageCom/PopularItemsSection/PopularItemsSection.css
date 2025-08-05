@@ -117,3 +117,20 @@
 .star.empty {
     color: var(--star-empty, #d1d5db);
 }
+
+/* Animation for entrance from bottom */
+.animate-popular {
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

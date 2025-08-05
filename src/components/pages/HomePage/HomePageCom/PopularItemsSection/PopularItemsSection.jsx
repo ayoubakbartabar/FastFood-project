@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./PopularItemsSection.css";
 import BestSellingData from "../BestSellingSection/BestSellingData.js";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 export default function PopularItemsSection() {
+  const sectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
   // Function to render star icons based on the rating value
   // Full star for each whole number, half star if decimal >= 0.5, empty star otherwise
   const renderStars = (rating) => {
@@ -20,9 +23,34 @@ export default function PopularItemsSection() {
     return stars;
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
+    };
+  }, []);
+
   return (
     <div className="popular-items-bg">
-      <section className="popular-items-section">
+      <section
+        className={`popular-items-section ${
+          isVisible ? "animate-popular" : ""
+        }`}
+        ref={sectionRef}
+      >
         <div className="popular-items-top">
           <h1 className="popular-items-title">Our Popular Items</h1>
           <p className="popular-items-paragraph">

@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./HomeBannerSection.css";
 
 export default function HomeBannerSection() {
-    
-  // image array
   const banners = [
     {
       src: "/image/66226fc288dda9a8fa1a7f39_Quality food.png",
@@ -18,6 +16,27 @@ export default function HomeBannerSection() {
       alt: "Free delivery banner",
     },
   ];
+  
+  useEffect(() => {
+    const images = document.querySelectorAll(".banner-image");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target); 
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    images.forEach((img) => observer.observe(img));
+
+    return () => {
+      images.forEach((img) => observer.unobserve(img));
+    };
+  }, []);
 
   return (
     <section className="home-banner-section">

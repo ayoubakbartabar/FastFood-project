@@ -23,7 +23,7 @@ export default function BestSellingSection() {
       setIsMobile(window.innerWidth <= 1024);
       setIndex(0); // Reset carousel index on resize
     };
-
+    
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -74,6 +74,27 @@ export default function BestSellingSection() {
     }
     return stars;
   };
+
+  useEffect(() => {
+    const cards = document.querySelectorAll(".product-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+
+    return () => {
+      cards.forEach((card) => observer.unobserve(card));
+    };
+  }, [index, isMobile]);
 
   return (
     <div className="best-selling-bg">
