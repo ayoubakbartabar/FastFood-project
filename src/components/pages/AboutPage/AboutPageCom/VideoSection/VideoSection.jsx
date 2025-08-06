@@ -1,32 +1,34 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./VideoSection.css";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 export default function VideoSection() {
   // Reference to the video DOM element
   const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
   // State to track whether the video is playing
   const [isPlaying, setIsPlaying] = useState(false);
 
   // State to control visibility of the custom play/pause button
   const [showControls, setShowControls] = useState(true);
+  const [isVisible, setIsVisible] = useState(false); 
 
-  // Toggle video play/pause and update states accordingly
+  // Toggle play/pause
   const togglePlay = () => {
     const video = videoRef.current;
     if (video.paused) {
       video.play();
       setIsPlaying(true);
-      setShowControls(false); // hide button after playing
+      setShowControls(false);
     } else {
       video.pause();
       setIsPlaying(false);
-      setShowControls(true); // show button when paused
+      setShowControls(true);
     }
   };
 
-  // Show control button when mouse enters the video area
+  // Mouse events
   const handleMouseEnter = () => {
     setShowControls(true);
   };
@@ -38,10 +40,30 @@ export default function VideoSection() {
     }
   };
 
+  // Scroll animation logic
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="video-section">
       <div
-        className="video-container"
+        ref={containerRef}
+        className={`video-container ${isVisible ? "video-visible" : ""}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
