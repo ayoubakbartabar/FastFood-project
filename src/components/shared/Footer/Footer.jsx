@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Footer.css";
 import {
   FaHome,
@@ -10,12 +10,43 @@ import {
 } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
+// Custom hook for intersection observer
+function useInViewAnimation(ref) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) observer.unobserve(ref.current);
+    };
+  }, [ref]);
+
+  return isVisible;
+}
+
 export default function Footer() {
+  const ulRef = useRef(null);
+  const isUlVisible = useInViewAnimation(ulRef);
+
   return (
     <footer className="footer-bg">
       <section className="footer-section">
         {/* Brand & Address */}
-        <div className="footer-company">
+        <div
+          className={`footer-company fade-up-init ${
+            isUlVisible ? "fade-up-visible" : ""
+          }`}
+        >
           <h2 className="footer-title">
             Elevate bites, build community, deliver culinary excellence with
             FastFood TNC
@@ -34,7 +65,13 @@ export default function Footer() {
         </div>
 
         {/* Navigation Links */}
-        <nav className="footer-links" aria-label="Quick Links">
+        <nav
+          ref={ulRef}
+          className={`footer-links fade-up-init ${
+            isUlVisible ? "fade-up-visible" : ""
+          }`}
+          aria-label="Quick Links"
+        >
           <h3 className="footer-heading">Quick Links</h3>
           <ul>
             <li>
@@ -56,7 +93,11 @@ export default function Footer() {
         </nav>
 
         {/* Business Hours */}
-        <div className="footer-hours">
+        <div
+          className={`footer-hours fade-up-init ${
+            isUlVisible ? "fade-up-visible" : ""
+          }`}
+        >
           <h3 className="footer-heading">Opening Hours</h3>
           <p>Monday to Friday</p>
           <p className="footer-subtext">10:00 AM to 12:00 PM</p>
@@ -65,7 +106,11 @@ export default function Footer() {
         </div>
 
         {/* Newsletter Subscription */}
-        <div className="footer-newsletter">
+        <div
+          className={`footer-newsletter fade-up-init ${
+            isUlVisible ? "fade-up-visible" : ""
+          }`}
+        >
           <h3 className="footer-heading">Newsletter Subscribe</h3>
           <p className="footer-subscribe-text">
             Stay in the loop: unlock exclusive offers, culinary insights, and
@@ -97,7 +142,11 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="footer-copy">
+        <div
+          className={`footer-copy fade-up-init ${
+            isUlVisible ? "fade-up-visible" : ""
+          }`}
+        >
           © 2025 FastFood TNC | Designed by{" "}
           <a
             href="https://github.com/ayoubakbartabar"
