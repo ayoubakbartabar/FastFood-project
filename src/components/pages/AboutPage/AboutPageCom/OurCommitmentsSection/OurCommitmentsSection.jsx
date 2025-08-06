@@ -1,9 +1,26 @@
-// OurCommitmentsSection.js
-import React from "react";
+import React, { useEffect } from "react";
 import "./OurCommitmentsSection.css";
 import OurCommitmentsData from "./OurCommitmentsData.js";
 
 export default function OurCommitmentsSection() {
+  useEffect(() => {
+    const boxes = document.querySelectorAll(".our-commitments-box");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target); 
+          }
+        });
+      },
+      { threshold: 0.2 } 
+    );
+
+    boxes.forEach((box) => observer.observe(box));
+  }, []);
+
   return (
     <div className="our-commitments-bg">
       <section className="our-commitments-section">
