@@ -1,16 +1,38 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./BrandIntroSection.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default function BrandIntroSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-in-view");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    const elements = sectionRef.current.querySelectorAll(".scroll-fade");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => {
+      elements.forEach((el) => observer.unobserve(el));
+    };
+  }, []);
+
   return (
     <div className="brand-intro-bg">
-      <section className="brand-intro-section container">
-        <div className="brand-intro-images-wrapper">
+      <section className="brand-intro-section container" ref={sectionRef}>
+        <div className="brand-intro-images-wrapper scroll-fade">
           <img
             src="/image/661e02d69d8c67c1854e7950_Rectangle 52.png"
             alt="Background shape"
-            className="brand-bg-image "
+            className="brand-bg-image"
           />
           <div className="brand-intro-images">
             <img
@@ -21,12 +43,12 @@ export default function BrandIntroSection() {
             <img
               src="/image/661e02d62401c65334b8f23c_Rectangle 51-p-500.png"
               alt="Happy woman with pizza"
-              className="brand-image "
+              className="brand-image"
             />
           </div>
         </div>
 
-        <div className="brand-intro-content">
+        <div className="brand-intro-content scroll-fade">
           <p className="brand-subtitle">Discover Fastfood TNC</p>
           <h2 className="brand-title">
             Where Flavor Meets <br /> Community Excellence
