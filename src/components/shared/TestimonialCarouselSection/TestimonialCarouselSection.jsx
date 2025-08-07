@@ -52,7 +52,7 @@ export default function TestimonialCarouselSection() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
-          observer.disconnect(); 
+          observer.disconnect();
         }
       },
       {
@@ -67,11 +67,13 @@ export default function TestimonialCarouselSection() {
 
   return (
     <div className="testimonial-carousel-bg">
-      <section className="testimonial-carousel-section">
-        <div
-          className={`testimonial-top ${visible ? "slide-up-fade-in" : ""}`}
-          ref={topRef}
-        >
+      <section
+        className={`testimonial-carousel-section ${
+          visible ? "slide-up-fade-in" : ""
+        }`}
+        ref={topRef}
+      >
+        <div className="testimonial-top">
           <h1 className="testimonial-title">Testimonials</h1>
           <p className="testimonial-paragraph">
             Elevating Your Dining Experience

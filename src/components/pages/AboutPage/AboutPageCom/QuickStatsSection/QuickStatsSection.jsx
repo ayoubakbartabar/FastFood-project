@@ -22,13 +22,21 @@ export default function QuickStatsSection() {
   // Setup Intersection Observer to trigger count when section is in view
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setStartCount(true);
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            setStartCount(true);
+            observer.unobserve(entry.target);
+          }
+        });
       },
-      { threshold: 0.5 }
+      { threshold: 0.4 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    const boxes = sectionRef.current?.querySelectorAll(".stat-box");
+    boxes?.forEach((box) => observer.observe(box));
+
     return () => observer.disconnect();
   }, []);
 
