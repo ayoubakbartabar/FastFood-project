@@ -5,20 +5,22 @@ import OurCommitmentsData from "./OurCommitmentsData.js";
 export default function OurCommitmentsSection() {
   useEffect(() => {
     const boxes = document.querySelectorAll(".our-commitments-box");
+    const top = document.querySelector(".our-commitments-top");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("show");
-            observer.unobserve(entry.target); 
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 } 
+      { threshold: 0.2 }
     );
 
     boxes.forEach((box) => observer.observe(box));
+    if (top) observer.observe(top);
   }, []);
 
   return (
