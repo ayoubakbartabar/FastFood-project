@@ -1,5 +1,4 @@
-// File: OurChefSection.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   FaFacebookF,
   FaInstagram,
@@ -54,10 +53,36 @@ export default function OurChefSection() {
       setAnimationClass("");
     }, 600);
   };
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef(null);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   return (
     <div className="our-chef-bg">
-      <section className="our-chef-section">
+      <section
+        ref={sectionRef}
+        className={`our-chef-section ${isVisible ? "visible" : ""}`}
+      >
         <div className="our-chef-top">
           <h1 className="our-chef-title">Our expert chef</h1>
           <p className="our-chef-paragraph">

@@ -1,9 +1,19 @@
-/* OurChefSection.css */
 .our-chef-section {
     max-width: 1600px;
     margin: 0 auto;
     padding: 4rem 1rem;
     font-family: var(--font-jost);
+}
+
+.our-chef-section {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.8s ease-in-out;
+}
+
+.our-chef-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .our-chef-top {
