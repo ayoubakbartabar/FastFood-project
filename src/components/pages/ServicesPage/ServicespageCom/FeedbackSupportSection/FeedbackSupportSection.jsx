@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./FeedbackSupportSection.css";
 
 export default function FeedbackSupportSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="feedback-section-container">
+    <div ref={sectionRef} className="feedback-section-container">
       <div className="feedback-images">
         <div className="top-images">
           <img
