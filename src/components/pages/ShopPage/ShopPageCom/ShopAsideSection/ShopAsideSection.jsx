@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./ShopAsideSection.css";
 import ShopProductData from "../ShopProductData/ShopProductData";
 import { FaSearch } from "react-icons/fa";
@@ -14,8 +14,31 @@ export default function ShopAsideSection({
     ),
   ];
 
+  const asideRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target); 
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (asideRef.current) {
+      observer.observe(asideRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <aside className="shop-aside">
+    <aside ref={asideRef} className={`shop-aside ${isVisible ? "show" : ""}`}>
       <div className="shop-search-box">
         <input type="text" placeholder="Search" className="shop-search-input" />
         <button className="shop-search-btn">
