@@ -1,15 +1,42 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./MenuListSection.css";
 import BestSellingData from "../../../HomePage/HomePageCom/BestSellingSection/BestSellingData";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 
 export default function MenuListSection() {
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="menu-list-bg">
       <section className="menu-list-section">
         <div className="menu-list-grid">
-          {BestSellingData.map((item) => (
-            <div className="menu-card" key={item.id}>
+          {BestSellingData.map((item, index) => (
+            <div
+              className="menu-card hidden"
+              key={item.id}
+              ref={(el) => (cardsRef.current[index] = el)}
+              style={{ transitionDelay: `${index * 0.15}s` }}
+            >
               <div className="menu-card-image">
                 <img src={item.image} alt={item.title} />
               </div>
