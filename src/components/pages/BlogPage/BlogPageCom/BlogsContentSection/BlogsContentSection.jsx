@@ -1,11 +1,34 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./BlogsContentSection.css";
 import PopularPost from "../BlogAsideSection/BlogAsideData";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 
 export default function BlogsContentSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const cards =
+            sectionRef.current.querySelectorAll(".blog-content-card");
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add("show");
+            }, index * 200);
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="blog-content-section">
+    <section className="blog-content-section" ref={sectionRef}>
       <div className="blog-content-grid">
         {PopularPost.map((item) => (
           <div className="blog-content-card" key={item.id}>
