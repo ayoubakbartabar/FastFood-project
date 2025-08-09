@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import "./CategoriesSection.css";
 import PopularPost from "../BlogAsideData";
@@ -9,8 +9,30 @@ const uniqueCategories = [
 ];
 
 export default function CategoriesSection() {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          const items = sectionRef.current.querySelectorAll(".category-item");
+          items.forEach((item, index) => {
+            setTimeout(() => {
+              item.classList.add("show");
+            }, index * 200);
+          });
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <aside className="categories-aside">
+    <aside className="categories-aside" ref={sectionRef}>
       <h3 className="categories-title">Categories</h3>
       <div className="categories-underline"></div>
       <ul className="categories-list">

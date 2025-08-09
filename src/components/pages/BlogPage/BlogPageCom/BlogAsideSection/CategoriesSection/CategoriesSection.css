@@ -34,11 +34,18 @@
     margin-bottom: 0.75rem;
     cursor: pointer;
     transition: color 0.2s ease;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.category-item.show {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .category-item:hover {
     color: #f59e0b;
-    /* hover: yellow-500 */
 }
 
 .category-icon {
