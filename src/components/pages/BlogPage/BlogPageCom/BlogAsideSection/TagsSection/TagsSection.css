@@ -35,6 +35,14 @@
     transition: background-color 0.3s ease;
     cursor: pointer;
     border: 0;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.tag-item.show {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .tag-item:hover {
