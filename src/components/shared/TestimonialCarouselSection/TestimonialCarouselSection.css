@@ -76,7 +76,7 @@
 .testimonial-carousel {
     display: flex;
     gap: 2rem;
-    transition: transform 800ms ease-in-out;
+    transition: transform 0.9s ease-in-out;
 }
 
 /* Single card */

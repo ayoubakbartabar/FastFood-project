@@ -36,7 +36,7 @@ export default function TestimonialCarouselSection() {
   //effects
   // Auto‑scroll
   useEffect(() => {
-    intervalRef.current = setInterval(goNext, 3000);
+    intervalRef.current = setInterval(goNext, 8000);
     return () => clearInterval(intervalRef.current);
   }, [cardsPerView]);
 
