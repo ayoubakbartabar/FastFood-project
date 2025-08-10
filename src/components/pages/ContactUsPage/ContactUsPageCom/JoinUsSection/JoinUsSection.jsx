@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./JoinUsSection.css";
 import { FaHome, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 
@@ -21,10 +21,46 @@ const contactInfo = [
 ];
 
 export default function JoinUsSection() {
+  const topRef = useRef(null);
+  const cardsRef = useRef([]);
+
+  useEffect(() => {
+    const observerOptions = { threshold: 0.2 };
+
+    const topObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-top");
+        }
+      });
+    }, observerOptions);
+
+    if (topRef.current) topObserver.observe(topRef.current);
+
+    const cardsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add("animate-card");
+          }, index * 200);
+        }
+      });
+    }, observerOptions);
+
+    cardsRef.current.forEach((card) => {
+      if (card) cardsObserver.observe(card);
+    });
+
+    return () => {
+      topObserver.disconnect();
+      cardsObserver.disconnect();
+    };
+  }, []);
+
   return (
     <div className="join-us-bg">
       <section className="join-us-section">
-        <div className="join-us-top">
+        <div className="join-us-top hidden-top" ref={topRef}>
           <h1 className="join-us-title">
             Let's Connect and Create <br />
             <span className="highlight-text">
@@ -39,7 +75,11 @@ export default function JoinUsSection() {
 
         <div className="join-us-cards">
           {contactInfo.map((item, index) => (
-            <div className="join-us-card" key={index}>
+            <div
+              className="join-us-card hidden-card"
+              key={index}
+              ref={(el) => (cardsRef.current[index] = el)}
+            >
               {item.icon}
               <h3>{item.title}</h3>
               {item.lines.map((line, idx) => (

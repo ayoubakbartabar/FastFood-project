@@ -3,11 +3,34 @@
     margin: 0 auto;
     max-width: 1600px;
     font-family: var(--font-jost);
+    overflow: hidden;
 }
 
 .join-us-top {
     text-align: center;
     margin-bottom: 3rem;
+}
+
+.hidden-top {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.hidden-card {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.animate-top {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.8s ease-out;
+}
+
+.animate-card {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 0.8s ease-out;
 }
 
 .join-us-title {
