@@ -13,7 +13,7 @@ const center = {
 };
 
 export default function LocationSection() {
-  LocationSection
+
   const [loading, setLoading] = useState(true); // Loading state for map
   const [isMapVisible, setIsMapVisible] = useState(false); // Tracks if section is in viewport
   const sectionRef = useRef(null);
