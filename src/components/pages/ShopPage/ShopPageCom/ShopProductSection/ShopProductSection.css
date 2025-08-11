@@ -77,3 +77,22 @@
     font-size: 16px;
     color: #000;
 }
+
+@media (max-width: 768px) {
+    .shop-product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+        justify-items: center;
+
+    }
+
+    .shop-product-section {
+        width: 100%;
+
+    }
+
+    .shop-product-card {
+        width: 100%;
+    }
+}
