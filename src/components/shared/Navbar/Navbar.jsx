@@ -99,8 +99,8 @@ export default function Navbar() {
             <LuShoppingBasket className="shop-basket-icon" />
           </button>
 
-          {/* Order now button */}
-          <OrderNowBtn variant="desktop" />
+          {/* Order now button - Desktop */}
+          <OrderNowBtn variant="desktop" className="order-now-desktop" />
 
           {/* Mobile menu button */}
           <button
@@ -123,12 +123,6 @@ export default function Navbar() {
               aria-label="Close menu"
             >
               <IoCloseCircle />
-            </button>
-            <button
-              className="mobile-shop-basket-btn"
-              aria-label="Shopping basket"
-            >
-              <LuShoppingBasket className="mobile-shop-basket-icon" />
             </button>
           </div>
 
