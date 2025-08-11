@@ -178,9 +178,12 @@
         padding: 0 1rem;
     }
 
-    .header-left-side {
-        align-items: center;
+    .header-left-content-wrapper {
+        display: flex;
         text-align: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
     }
 
     .header-pagination-buttons {

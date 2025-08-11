@@ -91,16 +91,8 @@
     box-shadow: 0 0 8px #ff6a1a, 0 0 20px #ff6a1a;
 }
 
-@media (max-width: 920px) {
+@media (max-width: 1127px) {
     .desktop-order-now {
-        display: none;
-    }
-
-    .hamburger-btn {
-        display: block;
-    }
-
-    .desktop-menu {
         display: none;
     }
 }
