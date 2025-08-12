@@ -1,15 +1,40 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import { NavLink } from "react-router-dom";
 import { LuSearch, LuShoppingBasket } from "react-icons/lu";
 import { FaHamburger } from "react-icons/fa";
 import { IoCloseCircle } from "react-icons/io5";
 import "./Navbar.css";
 import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
+import ShoppingBasketSection from "../ShoppingBasketCom/ShoppingBasketSection";
+
+// Custom hook to detect clicks outside a given ref element
+function useClickOutside(ref, handler, whenActive = true) {
+  useEffect(() => {
+    if (!whenActive) return;
+
+    const listener = (event) => {
+      // Do nothing if clicking ref's element or its descendants
+      if (!ref.current || ref.current.contains(event.target)) return;
+      handler(event);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler, whenActive]);
+}
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isBasketOpen, setIsBasketOpen] = useState(false);
+
   const mobileMenuRef = useRef(null);
+  const basketRef = useRef(null);
 
   const navbarMenus = [
     { id: 1, title: "Home", href: "/" },
@@ -21,33 +46,55 @@ export default function Navbar() {
     { id: 7, title: "Contact Us", href: "/contact-us" },
   ];
 
-  // Close mobile menu when clicking outside
-  useEffect(() => {
-    const handleOutsideClick = (event) => {
-      if (
-        isMobileMenuOpen &&
-        mobileMenuRef.current &&
-        !mobileMenuRef.current.contains(event.target)
-      ) {
-        setIsMobileMenuOpen(false);
-      }
-    };
+  // Close mobile menu when clicking outside using the custom hook
+  useClickOutside(
+    mobileMenuRef,
+    () => setIsMobileMenuOpen(false),
+    isMobileMenuOpen
+  );
 
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, [isMobileMenuOpen]);
+  // Close basket panel when clicking outside
+  useClickOutside(basketRef, () => setIsBasketOpen(false), isBasketOpen);
 
   // Close search input when clicking outside
   useEffect(() => {
+    if (!isSearchOpen) return;
+
     const handleClickOutside = (event) => {
-      if (isSearchOpen && !event.target.closest(".search-container")) {
+      if (!event.target.closest(".search-container")) {
         setIsSearchOpen(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [isSearchOpen]);
+
+  // useCallback for handlers to avoid re-creating functions on each render
+  const toggleSearch = useCallback(() => {
+    setIsSearchOpen((prev) => !prev);
+  }, []);
+
+  const openBasket = useCallback(() => {
+    setIsBasketOpen(true);
+  }, []);
+
+  const closeBasket = useCallback(() => {
+    setIsBasketOpen(false);
+  }, []);
+
+  const openMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(true);
+  }, []);
+
+  const closeMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
 
   return (
     <div className="navbar-bg">
@@ -75,14 +122,14 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Buttons section */}
+        {/* Buttons section (Search, Basket, Order, Mobile Menu) */}
         <div className="navbar-btn-section">
-          {/* Search icon with expanding input */}
+          {/* Search container */}
           <div className={`search-container ${isSearchOpen ? "open" : ""}`}>
             <button
               className="search-btn"
               aria-label="Search"
-              onClick={() => setIsSearchOpen((prev) => !prev)}
+              onClick={toggleSearch}
             >
               <LuSearch className="nav-search-icon" />
             </button>
@@ -94,18 +141,22 @@ export default function Navbar() {
             />
           </div>
 
-          {/* Shopping basket */}
-          <button className="shop-basket-btn" aria-label="Shopping basket">
+          {/* Shopping basket button */}
+          <button
+            className="shop-basket-btn"
+            aria-label="Shopping basket"
+            onClick={openBasket}
+          >
             <LuShoppingBasket className="shop-basket-icon" />
           </button>
 
-          {/* Order now button - Desktop */}
+          {/* Order now button (desktop only) */}
           <OrderNowBtn variant="desktop" className="order-now-desktop" />
 
-          {/* Mobile menu button */}
+          {/* Mobile menu open button */}
           <button
             className="hamburger-btn"
-            onClick={() => setIsMobileMenuOpen(true)}
+            onClick={openMobileMenu}
             aria-label="Open menu"
           >
             <FaHamburger />
@@ -113,19 +164,20 @@ export default function Navbar() {
         </div>
       </section>
 
-      {/* Mobile menu */}
+      {/* Mobile menu panel */}
       {isMobileMenuOpen && (
         <section className="mobile-menu-section" ref={mobileMenuRef}>
           <div className="mobile-btn-section">
             <button
               className="mobile-close-btn"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={closeMobileMenu}
               aria-label="Close menu"
             >
               <IoCloseCircle />
             </button>
           </div>
 
+          {/* Mobile menu list */}
           <ul className="menu-list mobile-menu">
             {navbarMenus.map((item) => (
               <li key={item.id} className="menu-item">
@@ -134,7 +186,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     isActive ? "menu-item active" : "menu-item"
                   }
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={closeMobileMenu}
                 >
                   {item.title}
                 </NavLink>
@@ -142,8 +194,29 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* Order now button (mobile) */}
           <OrderNowBtn variant="mobile" />
         </section>
+      )}
+
+      {/* Basket slide-in panel */}
+      <div
+        className={`basket-panel ${isBasketOpen ? "open" : ""}`}
+        ref={basketRef}
+      >
+        <button
+          className="basket-close-btn"
+          onClick={closeBasket}
+          aria-label="Close basket"
+        >
+          <IoCloseCircle size={28} />
+        </button>
+        <ShoppingBasketSection />
+      </div>
+
+      {/* Dark overlay behind basket */}
+      {isBasketOpen && (
+        <div className="basket-overlay" onClick={closeBasket}></div>
       )}
     </div>
   );
