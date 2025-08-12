@@ -84,7 +84,7 @@ export default function Navbar() {
               aria-label="Search"
               onClick={() => setIsSearchOpen((prev) => !prev)}
             >
-              <LuSearch className="search-icon" />
+              <LuSearch className="nav-search-icon" />
             </button>
             <input
               type="text"
