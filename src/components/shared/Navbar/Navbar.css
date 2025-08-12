@@ -77,6 +77,45 @@
     color: var(--text-color);
 }
 
+/* Basket slide-in panel */
+.basket-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    /* Hidden by default */
+    width: 400px;
+    max-width: 90%;
+    height: 100%;
+    background: #fff;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    /* Smooth slide animation */
+}
+
+.basket-panel.open {
+    right: 0;
+    /* Slide in from right */
+}
+
+.basket-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+/* Overlay background */
+.basket-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1500;
+}
+
 /* Expanding search input box */
 .search-input-box {
     width: 0;
