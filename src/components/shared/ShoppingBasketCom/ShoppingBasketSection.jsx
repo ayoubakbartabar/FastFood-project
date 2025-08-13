@@ -1,5 +1,5 @@
 import React from 'react'
-import '.ShoppingBasketSection.css'
+import './ShoppingBasketSection.css'
 
 export default function ShoppingBasketSection() {
   return (
