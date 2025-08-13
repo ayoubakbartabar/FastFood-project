@@ -2,33 +2,36 @@ import React, { useState, useEffect } from "react";
 import BestSellingData from "./BestSellingData";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import "./BestSellingSection.css";
 
 export default function BestSellingSection() {
-  // State to track current carousel index
+  // State for current carousel index
   const [index, setIndex] = useState(0);
 
-  // State to determine if the screen is mobile size
+  // State to check if screen size is mobile
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 1024);
 
   // Total number of products
   const total = BestSellingData.length;
 
-  // Number of cards visible at a time
+  // Number of cards visible at a time (all on mobile, 4 on desktop)
   const visibleCards = isMobile ? total : 4;
 
-  // Handle window resize to toggle mobile view
+  // React Router navigation hook
+  const navigate = useNavigate();
+
+  // Handle screen resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
-      setIndex(0); // Reset carousel index on resize
+      setIndex(0); // Reset carousel index when resizing
     };
-    
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Navigate to next set of cards (non-mobile only)
+  // Go to next carousel slide (desktop only)
   const next = () => {
     if (isMobile) return;
     setIndex((prev) =>
@@ -36,7 +39,7 @@ export default function BestSellingSection() {
     );
   };
 
-  // Navigate to previous set of cards (non-mobile only)
+  // Go to previous carousel slide (desktop only)
   const prev = () => {
     if (isMobile) return;
     setIndex((prev) =>
@@ -44,13 +47,13 @@ export default function BestSellingSection() {
     );
   };
 
-  // Get currently visible products based on carousel index
+  // Get visible product cards based on carousel index
   const getVisibleData = () => {
     if (isMobile) {
-      // On mobile: show all cards in grid layout
+      // Show all cards in grid on mobile
       return BestSellingData;
     }
-    // Looping logic for non-mobile carousel
+    // Loop back to start if reaching the end
     if (index + visibleCards > total) {
       return [
         ...BestSellingData.slice(index),
@@ -60,7 +63,7 @@ export default function BestSellingSection() {
     return BestSellingData.slice(index, index + visibleCards);
   };
 
-  // Render star ratings using FontAwesome icons
+  // Render star rating
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -75,6 +78,7 @@ export default function BestSellingSection() {
     return stars;
   };
 
+  // Animation effect: show product card when visible in viewport
   useEffect(() => {
     const cards = document.querySelectorAll(".product-card");
     const observer = new IntersectionObserver(
@@ -96,6 +100,11 @@ export default function BestSellingSection() {
     };
   }, [index, isMobile]);
 
+  // Navigate to product detail page with product data
+  const goToProductPage = (item) => {
+    navigate(`/product/${item.id}`, { state: item });
+  };
+
   return (
     <div className="best-selling-bg">
       <section className="best-selling-section">
@@ -110,7 +119,7 @@ export default function BestSellingSection() {
 
         {/* Carousel Wrapper */}
         <div className="carousel-wrapper">
-          {/* Left navigation button for desktop view */}
+          {/* Left navigation button (desktop only) */}
           {!isMobile && (
             <button className="carousel-button left" onClick={prev}>
               <IoChevronBack />
@@ -125,17 +134,34 @@ export default function BestSellingSection() {
           >
             {getVisibleData().map((item) => (
               <div key={item.id} className="product-card animate-entry">
-                <div className="product-image">
+                {/* Clickable product image */}
+                <div
+                  className="product-image"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => goToProductPage(item)}
+                >
                   <img src={item.image} alt={item.title} />
                 </div>
-                <h3 className="product-title">{item.title}</h3>
+
+                {/* Clickable product title */}
+                <h3
+                  className="product-title"
+                  style={{ cursor: "pointer" }}
+                  onClick={() => goToProductPage(item)}
+                >
+                  {item.title}
+                </h3>
+
+                {/* Star Rating */}
                 <div className="product-stars">{renderStars(item.star)}</div>
+
+                {/* Price */}
                 <p className="product-price">${item.price.toFixed(2)} USD</p>
               </div>
             ))}
           </div>
 
-          {/* Right navigation button for desktop view */}
+          {/* Right navigation button (desktop only) */}
           {!isMobile && (
             <button className="carousel-button right" onClick={next}>
               <IoChevronForward />

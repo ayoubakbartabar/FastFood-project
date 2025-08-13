@@ -8,6 +8,7 @@ import ServicesPage from "../pages/ServicesPage/ServicesPage.jsx";
 import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 import MenuPage from "../pages/MenuPage/MenuPage.jsx";
 import ContactUsPage from "../pages/ContactUsPage/ContactUsPage.jsx";
+import ProductPage from "../pages/ProductPage/ProductPage.jsx";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/menu" element={<MenuPage />} />
       <Route path="/contact-us" element={<ContactUsPage />} />
+
+      {/* Dynamic Product Route */}
+      <Route path="/product/:id" element={<ProductPage />} />
     </Routes>
   );
 }
