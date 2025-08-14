@@ -6,6 +6,8 @@ const BestSellingData = [
     star: 5,
     price: 30.0,
     count: 10,
+    category: "pasta",
+    sku: "2FPS",
   },
   {
     id: 2,
@@ -15,6 +17,8 @@ const BestSellingData = [
     star: 5,
     price: 41.0,
     count: 13,
+    category: "burger",
+    sku: "2ASF",
   },
   {
     id: 3,
@@ -23,6 +27,8 @@ const BestSellingData = [
     star: 5,
     price: 48.0,
     count: 18,
+    category: "pizza",
+    sku: "2FBG",
   },
   {
     id: 4,
@@ -31,6 +37,8 @@ const BestSellingData = [
     star: 4.5,
     price: 41.0,
     count: 17,
+    category: "combo meals",
+    sku: "2FBG",
   },
   {
     id: 5,
@@ -40,6 +48,8 @@ const BestSellingData = [
     star: 3.5,
     price: 75.0,
     count: 20,
+    category: "drink",
+    sku: "2FDT",
   },
   {
     id: 6,
@@ -48,6 +58,8 @@ const BestSellingData = [
     star: 5,
     price: 15.0,
     count: 8,
+    category: "drink",
+    sku: "2FBG",
   },
   {
     id: 7,
@@ -56,6 +68,8 @@ const BestSellingData = [
     star: 5,
     price: 20.0,
     count: 4,
+    category: "sides & fries",
+    sku: "2FBG",
   },
   {
     id: 8,
@@ -64,6 +78,8 @@ const BestSellingData = [
     star: 4.5,
     price: 35.0,
     count: 7,
+    category: "sandwich",
+    sku: "2FBA",
   },
 ];
 
