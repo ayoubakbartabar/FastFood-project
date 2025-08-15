@@ -122,10 +122,11 @@
     display: flex;
     align-items: center;
     margin-top: 15px;
+    width: 100%;
 }
 
 .cart-actions input {
-    width: 50px;
+    width: 130px;
     padding: 8px;
     font-size: 14px;
     margin-right: 10px;
