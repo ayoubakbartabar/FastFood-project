@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { CartContext } from "../../../../shared/CartContext/CartContext";
 import {
   FaStar,
   FaStarHalfAlt,
@@ -11,7 +12,9 @@ import {
 import "./ProductListSection.css";
 
 export default function ProductListSection({ product }) {
-  // images array
+  const { addToCart } = useContext(CartContext);
+  const [quantity, setQuantity] = useState(1);
+
   const imagesArr = [
     { id: 1, src: "/image/661cbeea84a87bb38b64302e_image 2.png" },
     { id: 2, src: "/image/661cbeeaefc1a1ed7fef7c08_default image-p-800.png" },
@@ -24,16 +27,12 @@ export default function ProductListSection({ product }) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
 
-    for (let i = 0; i < fullStars; i++) {
+    for (let i = 0; i < fullStars; i++)
       stars.push(<FaStar key={i} className="star full" />);
-    }
-    if (hasHalfStar) {
+    if (hasHalfStar)
       stars.push(<FaStarHalfAlt key="half" className="star half" />);
-    }
-    const remainingStars = 5 - stars.length;
-    for (let i = 0; i < remainingStars; i++) {
+    for (let i = stars.length; i < 5; i++)
       stars.push(<FaRegStar key={`empty-${i}`} className="star empty" />);
-    }
 
     return stars;
   };
@@ -72,8 +71,18 @@ export default function ProductListSection({ product }) {
 
               {/* Quantity and Add to Cart */}
               <div className="cart-actions">
-                <input type="number" defaultValue={1} min={1} />
-                <button className="add-to-cart">Add to Cart</button>
+                <input
+                  type="number"
+                  value={quantity}
+                  min={1}
+                  onChange={(e) => setQuantity(parseInt(e.target.value))}
+                />
+                <button
+                  className="add-to-cart"
+                  onClick={() => addToCart(product, quantity)}
+                >
+                  Add to Cart
+                </button>
               </div>
 
               <div className="product-meta">
@@ -85,16 +94,16 @@ export default function ProductListSection({ product }) {
                 </p>
                 <p className="share-icons">
                   <strong>Share:</strong>{" "}
-                  <a href="#" aria-label="Facebook">
+                  <a href="#">
                     <FaFacebookF />
                   </a>
-                  <a href="#" aria-label="Twitter">
+                  <a href="#">
                     <FaTwitter />
                   </a>
-                  <a href="#" aria-label="Pinterest">
+                  <a href="#">
                     <FaPinterestP />
                   </a>
-                  <a href="#" aria-label="YouTube">
+                  <a href="#">
                     <FaYoutube />
                   </a>
                 </p>
