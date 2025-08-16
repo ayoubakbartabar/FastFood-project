@@ -121,7 +121,7 @@
     align-items: center;
 }
 
-.price {
+.menu-item-price {
     font-size: 18px;
     font-weight: bold;
     color: var(--color-star-yellow);

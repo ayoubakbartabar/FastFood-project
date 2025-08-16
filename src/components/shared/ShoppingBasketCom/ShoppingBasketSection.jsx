@@ -29,13 +29,15 @@ export default function ShoppingBasketSection() {
               <img
                 src={item.image}
                 alt={item.title}
-                className="product-image"
+                className="cart-product-image"
               />
 
               {/* Product title and price */}
-              <div className="product-info">
-                <h3 className="product-name">{item.title}</h3>
-                <p className="product-price">${item.price.toFixed(2)} USD</p>
+              <div className="cart-product-info">
+                <h3 className="cart-product-name">{item.title}</h3>
+                <p className="cart-product-price">
+                  ${item.price.toFixed(2)} USD
+                </p>
               </div>
 
               {/* Quantity of the product (read-only for now) */}
@@ -43,12 +45,12 @@ export default function ShoppingBasketSection() {
                 type="number"
                 value={item.quantity}
                 readOnly
-                className="quantity-input"
+                className="cart-quantity-input"
               />
 
               {/* Remove button (X icon) to delete product from cart */}
               <FaTimes
-                className="remove-icon"
+                className="cart-remove-icon"
                 onClick={() => removeFromCart(item.id)}
               />
             </div>

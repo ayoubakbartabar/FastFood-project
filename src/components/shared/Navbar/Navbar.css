@@ -81,9 +81,9 @@
 .basket-panel {
     position: fixed;
     top: 0;
-    right: -400px;
+    right: -600px;
     /* Hidden by default */
-    width: 400px;
+    width: 500px;
     max-width: 90%;
     height: 100vh;
     background: #fff;
@@ -94,6 +94,7 @@
     padding: 20px;
     transition: right 0.3s ease-in-out;
     /* Smooth slide animation */
+    overflow-y: scroll;
 }
 
 .basket-panel.open {

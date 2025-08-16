@@ -61,7 +61,7 @@ export default function MenuListSection() {
                   NY olives pan. Spinach pan string pan
                 </p>
                 <div className="menu-card-footer">
-                  <span className="price">$ {item.price.toFixed(2)} USD</span>
+                  <span className="menu-item-price">$ {item.price.toFixed(2)} USD</span>
                   <button className="add-to-cart">Add to Cart</button>
                 </div>
               </div>
