@@ -1,13 +1,13 @@
+// ShoppingBasketSection.jsx
 import React, { useContext } from "react";
 import { CartContext } from "../../shared/CartContext/CartContext";
-import { FaTimes } from "react-icons/fa";
 import "./ShoppingBasketSection.css";
 
 export default function ShoppingBasketSection() {
-  // Access cart data and removeFromCart method from CartContext
-  const { cart, removeFromCart } = useContext(CartContext);
+  // Access cart context values
+  const { cart, updateQuantity } = useContext(CartContext);
 
-  // Calculate subtotal price of all items in the cart
+  // Calculate subtotal of all cart items
   const subtotal = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -15,14 +15,17 @@ export default function ShoppingBasketSection() {
 
   return (
     <section className="shopping-basket-section">
-      <h2>Your Cart</h2>
+      {/* Header */}
+      <div className="basket-header">
+        <h2>Your Cart</h2>
+      </div>
 
-      {/* If cart is empty, display a message */}
+      {/* Show empty basket message */}
       {cart.length === 0 ? (
-        <p>Your basket is empty</p>
+        <p className="empty-cart">Your basket is empty</p>
       ) : (
         <>
-          {/* Loop through cart items and display each product */}
+          {/* Render all cart items */}
           {cart.map((item) => (
             <div key={item.id} className="basket-item">
               {/* Product image */}
@@ -32,33 +35,30 @@ export default function ShoppingBasketSection() {
                 className="cart-product-image"
               />
 
-              {/* Product title and price */}
+              {/* Product info */}
               <div className="cart-product-info">
                 <h3 className="cart-product-name">{item.title}</h3>
                 <p className="cart-product-price">
-                  ${item.price.toFixed(2)} USD
+                  ${item.price.toFixed(2)} <span className="currency">USD</span>
                 </p>
               </div>
 
-              {/* Quantity of the product (read-only for now) */}
+              {/* Quantity input (if 0 → product removed automatically) */}
               <input
                 type="number"
+                min="0"
                 value={item.quantity}
-                readOnly
+                onChange={(e) =>
+                  updateQuantity(item.id, Number(e.target.value))
+                }
                 className="cart-quantity-input"
-              />
-
-              {/* Remove button (X icon) to delete product from cart */}
-              <FaTimes
-                className="cart-remove-icon"
-                onClick={() => removeFromCart(item.id)}
               />
             </div>
           ))}
 
-          {/* Display subtotal price */}
+          {/* Subtotal section */}
           <div className="basket-subtotal">
-            <span>Subtotal</span>
+            <span className="subtotal-text">Subtotal</span>
             <span className="subtotal-price">${subtotal.toFixed(2)} USD</span>
           </div>
 
