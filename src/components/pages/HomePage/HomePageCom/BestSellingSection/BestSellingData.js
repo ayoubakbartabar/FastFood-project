@@ -58,7 +58,7 @@ const BestSellingData = [
     star: 3.5,
     price: 75.0,
     count: 20,
-    category: "drink",
+    category: "drinks",
     sku: "2FDT",
   },
   {
@@ -70,7 +70,7 @@ const BestSellingData = [
     star: 5,
     price: 15.0,
     count: 8,
-    category: "drink",
+    category: "drinks",
     sku: "2FBG",
   },
   {
