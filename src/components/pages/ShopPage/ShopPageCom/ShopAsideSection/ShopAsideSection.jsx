@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./ShopAsideSection.css";
-import ShopProductData from "../ShopProductData/ShopProductData";
+import BestSellingData from "../../../HomePage/HomePageCom/BestSellingSection/BestSellingData";
 import { FaSearch } from "react-icons/fa";
 
 export default function ShopAsideSection({
@@ -10,7 +10,7 @@ export default function ShopAsideSection({
   const categories = [
     "all",
     ...new Set(
-      ShopProductData.map((item) => item.category.trim().toLowerCase())
+      BestSellingData.map((item) => item.category.trim().toLowerCase())
     ),
   ];
 
@@ -23,7 +23,7 @@ export default function ShopAsideSection({
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.unobserve(entry.target); 
+            observer.unobserve(entry.target);
           }
         });
       },
