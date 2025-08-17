@@ -29,16 +29,18 @@ export default function ShoppingBasketSection() {
           {cart.map((item) => (
             <div key={item.id} className="basket-item">
               {/* Product image */}
-              <img
-                src={item.image}
-                alt={item.title}
-                className="cart-product-image"
-              />
+              <div className="basket-image-container">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="basket-product-image"
+                />
+              </div>
 
               {/* Product info */}
-              <div className="cart-product-info">
-                <h3 className="cart-product-name">{item.title}</h3>
-                <p className="cart-product-price">
+              <div className="basket-product-info">
+                <h3 className="basket-product-name">{item.title}</h3>
+                <p className="basket-product-price">
                   ${item.price.toFixed(2)} <span className="currency">USD</span>
                 </p>
               </div>
@@ -51,7 +53,7 @@ export default function ShoppingBasketSection() {
                 onChange={(e) =>
                   updateQuantity(item.id, Number(e.target.value))
                 }
-                className="cart-quantity-input"
+                className="basket-quantity-input"
               />
             </div>
           ))}
