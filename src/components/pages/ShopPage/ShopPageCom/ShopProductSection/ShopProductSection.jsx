@@ -1,25 +1,38 @@
+// ShopProductSection.jsx
 import React, { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom"; // For page navigation
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"; // For rating stars
 import "./ShopProductSection.css";
-import ShopProductData from "../ShopProductData/ShopProductData";
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
+import BestSellingData from "../../../HomePage/HomePageCom/BestSellingSection/BestSellingData";
 
 export default function ShopProductSection({ selectedCategory }) {
-  const sectionRef = useRef(null);
-  const [visibleCards, setVisibleCards] = useState([]); // Track which cards are visible
+  const sectionRef = useRef(null); // Reference to the section for intersection observer
+  const [visibleCards, setVisibleCards] = useState([]); // Keep track of which cards are visible
+  const navigate = useNavigate(); // React Router navigation hook
 
-  // Function to render star icons based on rating value
+  // Navigate to product detail page passing product data via state
+  const goToProductPage = (product) => {
+    navigate(`/product/${product.id}`, { state: product });
+  };
+
+  // Render stars based on rating (full, half, empty)
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
     const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
     const stars = [];
 
+    // Add full stars
     for (let i = 0; i < fullStars; i++) {
       stars.push(<FaStar key={`full-${i}`} className="star full" />);
     }
+
+    // Add half star if applicable
     if (hasHalfStar) {
       stars.push(<FaStarHalfAlt key="half" className="star half" />);
     }
+
+    // Add empty stars
     for (let i = 0; i < emptyStars; i++) {
       stars.push(<FaRegStar key={`empty-${i}`} className="star empty" />);
     }
@@ -27,39 +40,39 @@ export default function ShopProductSection({ selectedCategory }) {
     return stars;
   };
 
-  // Filter products based on selected category
-  const filteredProducts = ShopProductData.filter(
+  // Filter products by selected category
+  const filteredProducts = BestSellingData.filter(
     (product) =>
       product.image &&
-      product.name &&
+      product.title &&
       (selectedCategory === "all" ||
         product.category.trim().toLowerCase() === selectedCategory)
   );
 
+  // Animate product cards when section enters viewport
   useEffect(() => {
-    // Intersection Observer to detect when section is in viewport
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // Animate cards one by one with delay
+            // Animate each card one by one with a delay
             filteredProducts.forEach((_, index) => {
               setTimeout(() => {
                 setVisibleCards((prev) => [...prev, index]);
-              }, index * 150); // Delay between cards (150ms)
+              }, index * 150); // 150ms delay per card
             });
-            observer.unobserve(entry.target); // Run only once
+            observer.unobserve(entry.target); // Stop observing after first trigger
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 } // Trigger when 20% of section is visible
     );
 
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => observer.disconnect(); // Cleanup on unmount
   }, [filteredProducts]);
 
   return (
@@ -72,15 +85,25 @@ export default function ShopProductSection({ selectedCategory }) {
               visibleCards.includes(index) ? "show" : ""
             }`}
           >
-            {/* Product image */}
-            <div className="shop-product-image">
-              <img src={product.image} alt={product.name} />
+            {/* Product image clickable */}
+            <div
+              className="shop-product-image"
+              style={{ cursor: "pointer" }}
+              onClick={() => goToProductPage(product)}
+            >
+              <img src={product.image} alt={product.title} />
             </div>
 
-            {/* Product name */}
-            <h3 className="shop-product-name">{product.name}</h3>
+            {/* Product title clickable */}
+            <h3
+              className="shop-product-name"
+              style={{ cursor: "pointer" }}
+              onClick={() => goToProductPage(product)}
+            >
+              {product.title}
+            </h3>
 
-            {/* Product rating stars */}
+            {/* Product star rating */}
             <div className="shop-product-stars">
               {renderStars(product.star)}
             </div>
