@@ -3,6 +3,48 @@ const PopularPost = [
     id: 1,
     image: "/image/blog-image(1).png",
     title: "The Inspiring Fusion of Art and Cuisine",
+    content: [
+      {
+        type: "paragraph",
+        text: "Exploring the evolving landscape of FastFood TNC the blog delves into its impact on consumer habits and the broader food industry, dissecting its strategies and societal implications in just two lines.",
+      },
+      {
+        type: "paragraph",
+        text: "Embark on a gastronomic adventure with FastFood TNC as we invite you to discover the essence of our culinary artistry...",
+      },
+      {
+        type: "title",
+        text: "Grilled Peach Salad - A Symphony of Freshness:",
+      },
+      {
+        type: "paragraph",
+        text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad...",
+      },
+      {
+        type: "title",
+        text: "Lobster Risotto - Luxurious Indulgence",
+      },
+      {
+        type: "paragraph",
+        text: "Elevate your dining experience with our Lobster Risotto, a luxurious dish...",
+      },
+      {
+        type: "paragraph",
+        text: "Unleash your taste buds with our TNC Signature Burger, where a juicy Angus beef patty...",
+      },
+      {
+        type: "title",
+        text: "Chocolate Decadence Cake - Sweet Culmination",
+      },
+      {
+        type: "paragraph",
+        text: "Conclude your culinary journey on a sweet note with our Chocolate Decadence Cake...",
+      },
+      {
+        type: "paragraph",
+        text: "At FastFood TNC, our signature dishes are not just meals; they are culinary stories...",
+      },
+    ],
     categories: "Subway",
     tags: ["Food", "TNC menu", "Offers"],
   },
