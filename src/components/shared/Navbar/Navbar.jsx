@@ -41,7 +41,7 @@ export default function Navbar() {
     { id: 2, title: "About", href: "/about" },
     { id: 3, title: "Shop", href: "/shop" },
     { id: 4, title: "Service", href: "/service" },
-    { id: 5, title: "Blog", href: "/blog" },
+    { id: 5, title: "Blog", href: "/blogs" },
     { id: 6, title: "Menu", href: "/menu" },
     { id: 7, title: "Contact Us", href: "/contact-us" },
   ];
