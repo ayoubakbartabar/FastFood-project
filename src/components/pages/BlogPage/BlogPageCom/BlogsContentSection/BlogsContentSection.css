@@ -70,6 +70,10 @@
 }
 
 .read-more {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    width: fit-content;
     display: inline-flex;
     align-items: center;
     color: #007bff;

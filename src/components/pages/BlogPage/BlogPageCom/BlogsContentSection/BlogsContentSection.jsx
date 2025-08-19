@@ -2,9 +2,15 @@ import React, { useEffect, useRef } from "react";
 import "./BlogsContentSection.css";
 import PopularPost from "../BlogAsideSection/BlogAsideData";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogsContentSection() {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleReadMore = (post) => {
+    navigate(`/blog/${post.id}`, { state: { post } });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,9 +46,12 @@ export default function BlogsContentSection() {
             <div className="blog-content-content">
               <span className="blog-content-category">{item.categories}</span>
               <h3 className="blog-content-title">{item.title}</h3>
-              <a href="#" className="read-more">
+              <button
+                className="read-more"
+                onClick={() => handleReadMore(item)}
+              >
                 Read more <MdOutlineArrowRightAlt />
-              </a>
+              </button>
             </div>
           </div>
         ))}
