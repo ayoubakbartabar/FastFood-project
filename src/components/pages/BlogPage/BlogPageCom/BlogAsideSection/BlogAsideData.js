@@ -21,6 +21,9 @@ const PopularPost = [
         text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
         type: "title",
         text: "Lobster Risotto - Luxurious Indulgence",
       },
@@ -68,6 +71,9 @@ const PopularPost = [
       {
         type: "paragraph",
         text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
+      },
+      {
+        type: "image",
       },
       {
         type: "title",
@@ -119,6 +125,9 @@ const PopularPost = [
         text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
         type: "title",
         text: "Lobster Risotto - Luxurious Indulgence",
       },
@@ -166,6 +175,9 @@ const PopularPost = [
       {
         type: "paragraph",
         text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
+      },
+      {
+        type: "image",
       },
       {
         type: "title",
@@ -218,6 +230,9 @@ const PopularPost = [
         text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
       },
       {
+        type: "image",
+      },
+      {
         type: "title",
         text: "Lobster Risotto - Luxurious Indulgence",
       },
@@ -265,6 +280,9 @@ const PopularPost = [
       {
         type: "paragraph",
         text: "Immerse yourself in the vibrant flavors of summer with our Grilled Peach Salad. This refreshing starter combines the sweetness of perfectly grilled peaches with the peppery arugula, creamy goat cheese, and the delightful crunch of candied pecans. Drizzled with a balsamic vinaigrette, this salad is a harmonious melody of contrasting textures and tastes.",
+      },
+      {
+        type: "image",
       },
       {
         type: "title",
