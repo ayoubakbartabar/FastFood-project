@@ -2,9 +2,15 @@ import React, { useEffect, useRef } from "react";
 import { IoSearch } from "react-icons/io5";
 import "./PopularPostSection.css";
 import PopularPost from "../BlogAsideData";
+import { useNavigate } from "react-router-dom";
 
 export default function PopularPostSection() {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleReadMore = (post) => {
+    navigate(`/blog/${post.id}`, { state: { post } });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,7 +48,7 @@ export default function PopularPostSection() {
         {PopularPost.map((post) => (
           <div key={post.id} className="popular-post-item">
             <img src={post.image} alt={post.title} />
-            <p>{post.title}</p>
+            <p onClick={() => handleReadMore(post)}>{post.title}</p>
           </div>
         ))}
       </div>
