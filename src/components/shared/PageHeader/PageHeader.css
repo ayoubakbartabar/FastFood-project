@@ -22,8 +22,14 @@
 }
 
 .page-header-title {
-    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-size: clamp(1.8rem, 5vw, 4rem);
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 90%;
 }
+
+
 
 .page-header-menu {
     display: flex;
