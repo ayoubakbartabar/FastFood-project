@@ -19,7 +19,7 @@ export default function BlogSection() {
       <Navbar />
       <PageHeader title={post.title} />
 
-      <div className="blog-section-main-wrapper">
+      <div className="blog-main-wrapper">
         {/* Aside Section */}
         <div className="blog-aside-section">
           <BlogAsideSection />
