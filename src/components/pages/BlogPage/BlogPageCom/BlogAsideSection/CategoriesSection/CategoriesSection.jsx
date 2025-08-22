@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import "./CategoriesSection.css";
 import PopularPost from "../BlogAsideData";
+import { useNavigate } from "react-router-dom";
 
 // Extract unique categories
 const uniqueCategories = [
@@ -10,6 +11,11 @@ const uniqueCategories = [
 
 export default function CategoriesSection() {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleCategoriesBlog = (category) => {
+    navigate(`/blog/category/${category}`, { state: { category } });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,7 +43,11 @@ export default function CategoriesSection() {
       <div className="categories-underline"></div>
       <ul className="categories-list">
         {uniqueCategories.map((category, index) => (
-          <li key={index} className="category-item">
+          <li
+            onClick={() => handleCategoriesBlog(category)}
+            key={index}
+            className="category-item"
+          >
             <FiChevronRight className="category-icon" />
             <span>{category}</span>
           </li>
