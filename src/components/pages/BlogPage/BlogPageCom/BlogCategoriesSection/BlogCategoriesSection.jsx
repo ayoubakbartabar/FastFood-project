@@ -7,8 +7,15 @@ import Footer from "../../../../shared/Footer/Footer";
 import { useLocation } from "react-router-dom";
 import PopularPost from "../BlogAsideSection/BlogAsideData";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 export default function BlogCategoriesSection() {
+  const navigate = useNavigate();
+
+  const handleReadMore = (post) => {
+    navigate(`/blog/${post.id}`, { state: { post } });
+  };
+  
   // Get the current location object from react-router
   const location = useLocation();
   // Retrieve the category passed through state from navigation
@@ -55,7 +62,7 @@ export default function BlogCategoriesSection() {
                     )}
                     <button
                       className="blog-categories-read-more"
-                      // onClick={() => handleReadMore(post)}
+                      onClick={() => handleReadMore(post)}
                     >
                       Read more <MdOutlineArrowRightAlt />
                     </button>
