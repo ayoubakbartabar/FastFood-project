@@ -11,6 +11,7 @@ import ContactUsPage from "../pages/ContactUsPage/ContactUsPage.jsx";
 import ProductPage from "../pages/ProductPage/ProductPage.jsx";
 import { CartProvider } from "../shared/CartContext/CartContext.jsx";
 import BlogSection from "../pages/BlogPage/BlogPageCom/BlogSection/BlogSection.jsx";
+import BlogCategoriesSection from "../pages/BlogPage/BlogPageCom/BlogCategoriesSection/BlogCategoriesSection.jsx";
 
 function App() {
   return (
@@ -24,7 +25,13 @@ function App() {
         <Route path="/menu" element={<MenuPage />} />
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
+
         <Route path="/blog/:id" element={<BlogSection />} />
+
+        <Route
+          path="/blog/category/:category"
+          element={<BlogCategoriesSection />}
+        />
       </Routes>
     </CartProvider>
   );
