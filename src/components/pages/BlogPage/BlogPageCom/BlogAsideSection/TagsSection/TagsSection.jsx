@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import "./TagsSection.css";
 import PopularPost from "../BlogAsideData";
+import { useNavigate } from "react-router-dom";
 
 const uniqueTags = [
   ...new Set(PopularPost.flatMap((post) => post.tags.map((tag) => tag.trim()))),
@@ -8,6 +9,11 @@ const uniqueTags = [
 
 export default function TagsSection() {
   const sectionRef = useRef(null);
+  const navigate = useNavigate();
+
+  const handleTagsBlog = (tags) => {
+    navigate(`/blog/tags/${tags}`, { state: { tags } });
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -34,7 +40,11 @@ export default function TagsSection() {
       <h3 className="tags-title">Tags</h3>
       <div className="tags-container">
         {uniqueTags.map((tag, index) => (
-          <button key={index} className="tag-item">
+          <button
+            onClick={() => handleTagsBlog(tag)}
+            key={index}
+            className="tag-item"
+          >
             {tag}
           </button>
         ))}
