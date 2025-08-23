@@ -4,47 +4,65 @@ import Navbar from "../../../../shared/Navbar/Navbar";
 import PageHeader from "../../../../shared/PageHeader/PageHeader";
 import SocialSection from "../../../../shared/SocialSection/SocialSection";
 import Footer from "../../../../shared/Footer/Footer";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PopularPost from "../BlogAsideSection/BlogAsideData";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
 
 export default function BlogCategoriesSection() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { type, value } = useParams();
 
+  // Handle navigation to single blog post
   const handleReadMore = (post) => {
     navigate(`/blog/${post.id}`, { state: { post } });
   };
-  
-  // Get the current location object from react-router
-  const location = useLocation();
-  // Retrieve the category passed through state from navigation
-  const category = location.state?.category;
 
-  // If no category is found, display a message
-  if (!category) return <p>Category not found</p>;
+  /**
+   * Detect if this page is showing category or tag.
+   * Priority: state > URL params
+   */
+  const category =
+    location.state?.category || (type === "category" ? value : null);
+  const tag = location.state?.tag || (type === "tags" ? value : null);
 
-  // Filter posts to show only those that belong to the selected category
-  const filteredPosts = PopularPost.filter(
-    (post) => post.categories.trim() === category
-  );
+  const pageType = category ? "category" : tag ? "tag" : null;
+
+  // If no type detected, show error
+  if (!pageType) return <p>No category or tag provided.</p>;
+
+  // Filter posts
+  let filteredPosts = [];
+  if (pageType === "category") {
+    filteredPosts = PopularPost.filter(
+      (post) => post.categories.trim() === category
+    );
+  } else if (pageType === "tag") {
+    filteredPosts = PopularPost.filter((post) =>
+      post.tags.some((t) => t.trim() === tag)
+    );
+  }
 
   return (
     <>
       <Navbar />
-      <PageHeader title={category} />
+      <PageHeader
+        title={
+          pageType === "category" ? `Category: ${category}` : `Tag: ${tag}`
+        }
+      />
+
       <div className="blog-categories-bg">
         <section className="blog-categories-section">
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => {
-              // Get the first paragraph from the content array
+              // Extract first paragraph of post
               const firstParagraph = post.content.find(
                 (item) => item.type === "paragraph"
               )?.text;
 
               return (
                 <div className="blog-categories-card" key={post.id}>
-                  {/* Blog post image */}
                   <img
                     src={post.image}
                     alt={post.title}
@@ -71,8 +89,10 @@ export default function BlogCategoriesSection() {
               );
             })
           ) : (
-            // Message if no posts are found for this category
-            <p>No posts found for this category.</p>
+            <p>
+              No posts found for this{" "}
+              {pageType === "category" ? "category" : "tag"}.
+            </p>
           )}
         </section>
       </div>
