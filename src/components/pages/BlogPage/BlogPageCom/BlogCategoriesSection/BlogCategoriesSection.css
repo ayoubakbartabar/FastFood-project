@@ -1,3 +1,19 @@
+.blog-categories-section {
+    max-width: 1600px;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    justify-items: center;
+}
+
+/* Special case: if there's only 1 card, keep it centered with smaller width */
+.blog-categories-section:has(.blog-categories-card:only-child) {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+
 .blog-categories-card {
     width: 100%;
     max-width: 560px;
@@ -11,27 +27,6 @@
     cursor: pointer;
 }
 
-.blog-categories-section {
-    max-width: 1600px;
-    margin: 4rem auto;
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    justify-items: center;
-}
-
-.blog-categories-card {
-    width: 100%;
-    border-radius: 1rem;
-    overflow: hidden;
-    background-color: var(--color-white);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-}
 
 .blog-categories-card:hover {
     transform: translateY(-8px);
