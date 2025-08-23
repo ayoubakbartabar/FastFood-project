@@ -26,12 +26,11 @@ function App() {
         <Route path="/contact-us" element={<ContactUsPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
 
+        {/* Single blog detail page */}
         <Route path="/blog/:id" element={<BlogSection />} />
 
-        <Route
-          path="/blog/category/:category"
-          element={<BlogCategoriesSection />}
-        />
+        {/* Dynamic route for both categories and tags */}
+        <Route path="/blog/:type/:value" element={<BlogCategoriesSection />} />
       </Routes>
     </CartProvider>
   );
