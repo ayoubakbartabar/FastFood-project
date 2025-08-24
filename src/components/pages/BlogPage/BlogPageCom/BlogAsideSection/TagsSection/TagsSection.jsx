@@ -1,48 +1,30 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./TagsSection.css";
-import PopularPost from "../BlogAsideData";
 import { useNavigate } from "react-router-dom";
-
-const uniqueTags = [
-  ...new Set(PopularPost.flatMap((post) => post.tags.map((tag) => tag.trim()))),
-];
+import { useBlog } from "../../../../../shared/BlogContext/BlogContext";
+import { useRevealOnScroll } from "../../../../../shared/useRevealOnScroll/useRevealOnScroll";
 
 export default function TagsSection() {
   const sectionRef = useRef(null);
   const navigate = useNavigate();
+  const { tags } = useBlog(); // Get unique tags from context
 
-  const handleTagsBlog = (tags) => {
-    navigate(`/blog/tags/${tags}`, { state: { tags } });
+  // Handle tag click -> navigate to tags page
+  const handleTagsBlog = (tag) => {
+    navigate(`/blog/tags/${tag}`, { state: { tag } });
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          const buttons = sectionRef.current.querySelectorAll(".tag-item");
-          buttons.forEach((btn, index) => {
-            setTimeout(() => {
-              btn.classList.add("show");
-            }, index * 150);
-          });
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  // Apply reveal-on-scroll animation
+  useRevealOnScroll(sectionRef, ".tag-item", 150);
 
   return (
     <aside className="tags-aside" ref={sectionRef}>
       <h3 className="tags-title">Tags</h3>
       <div className="tags-container">
-        {uniqueTags.map((tag, index) => (
+        {tags.map((tag, index) => (
           <button
-            onClick={() => handleTagsBlog(tag)}
             key={index}
+            onClick={() => handleTagsBlog(tag)}
             className="tag-item"
           >
             {tag}
