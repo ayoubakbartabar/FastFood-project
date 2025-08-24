@@ -10,28 +10,34 @@ import MenuPage from "../pages/MenuPage/MenuPage.jsx";
 import ContactUsPage from "../pages/ContactUsPage/ContactUsPage.jsx";
 import ProductPage from "../pages/ProductPage/ProductPage.jsx";
 import { CartProvider } from "../shared/CartContext/CartContext.jsx";
+import { BlogProvider } from "../shared/BlogContext/BlogContext.jsx";
 import BlogSection from "../pages/BlogPage/BlogPageCom/BlogSection/BlogSection.jsx";
 import BlogCategoriesSection from "../pages/BlogPage/BlogPageCom/BlogCategoriesSection/BlogCategoriesSection.jsx";
 
 function App() {
   return (
     <CartProvider>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/shop" element={<ShopPage />} />
-        <Route path="/service" element={<ServicesPage />} />
-        <Route path="/blogs" element={<BlogPage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/contact-us" element={<ContactUsPage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+      <BlogProvider>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/shop" element={<ShopPage />} />
+          <Route path="/service" element={<ServicesPage />} />
+          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/contact-us" element={<ContactUsPage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
 
-        {/* Single blog detail page */}
-        <Route path="/blog/:id" element={<BlogSection />} />
+          {/* Single blog detail page */}
+          <Route path="/blog/:id" element={<BlogSection />} />
 
-        {/* Dynamic route for both categories and tags */}
-        <Route path="/blog/:type/:value" element={<BlogCategoriesSection />} />
-      </Routes>
+          {/* Dynamic route for both categories and tags */}
+          <Route
+            path="/blog/:type/:value"
+            element={<BlogCategoriesSection />}
+          />
+        </Routes>
+      </BlogProvider>
     </CartProvider>
   );
 }

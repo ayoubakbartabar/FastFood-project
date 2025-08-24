@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo } from "react";
-import PopularPost from "../../pages/BlogPage/BlogPageCom/BlogAsideData";
+import PopularPost from "../../pages/BlogPage/BlogPageCom/BlogAsideSection/BlogAsideData";
 
 // Create a context to provide blog-related data
 const BlogContext = createContext();
