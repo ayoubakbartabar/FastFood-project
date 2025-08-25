@@ -5,6 +5,7 @@ import PageHeader from "../../../../shared/PageHeader/PageHeader.jsx";
 import FeedbackSupportSection from "../../../../shared/FeedbackSupportSection/FeedbackSupportSection.jsx";
 import SocialSection from "../../../../shared/SocialSection/SocialSection.jsx";
 import Footer from "../../../../shared/Footer/Footer.jsx";
+import ServiceFormSection from "../ServiceFormSection/ServiceFormSection.jsx";
 
 export default function ServiceCard() {
   return (
@@ -12,7 +13,8 @@ export default function ServiceCard() {
       <Navbar />
       <PageHeader title={"ABCD"} />
       <section className="service-card-section">
-
+        
+        <ServiceFormSection/>
       </section>
       <FeedbackSupportSection />
       <SocialSection />
