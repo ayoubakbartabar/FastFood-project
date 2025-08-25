@@ -45,7 +45,7 @@ export default function HomePageBlogSection() {
                 <span className="blog-category">{item.category}</span>
                 <h3 className="blog-title">{item.title}</h3>
                 <p className="blog-paragraph">{item.paragraph}</p>
-                <a href="#" className="read-more">
+                <a href="/blogs" className="read-more">
                   Read more <MdOutlineArrowRightAlt />
                 </a>
               </div>
