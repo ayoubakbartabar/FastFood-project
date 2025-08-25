@@ -5,6 +5,29 @@ const ServiceSectionData = [
     title: "Community Engagement",
     paragraph:
       "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+    content: [
+      { type: "title", value: "Dine-In Excellence" },
+      {
+        type: "paragraph",
+        value:
+          "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
+      },
+    ],
   },
   {
     id: 2,
@@ -12,6 +35,29 @@ const ServiceSectionData = [
     title: "Table Reservations",
     paragraph:
       "Elevate events with Fastfood TNC catering, adding delectable touches to special moments.",
+    content: [
+      { type: "title", value: "Dine-In Excellence" },
+      {
+        type: "paragraph",
+        value:
+          "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
+      },
+    ],
   },
   {
     id: 3,
@@ -19,6 +65,29 @@ const ServiceSectionData = [
     title: "Catering for Occasion",
     paragraph:
       "Elevate events with Fastfood TNC catering, adding delectable touches to special moments.",
+    content: [
+      { type: "title", value: "Dine-In Excellence" },
+      {
+        type: "paragraph",
+        value:
+          "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
+      },
+    ],
   },
   {
     id: 4,
@@ -26,6 +95,29 @@ const ServiceSectionData = [
     title: "Express Delivery",
     paragraph:
       "Can't make it? Experience Express Delivery: hot, fresh, and on-time to your door.",
+    content: [
+      { type: "title", value: "Dine-In Excellence" },
+      {
+        type: "paragraph",
+        value:
+          "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
+      },
+    ],
   },
   {
     id: 5,
@@ -33,6 +125,29 @@ const ServiceSectionData = [
     title: "Easy Online Ordering",
     paragraph:
       "Explore online ordering: choose dishes, customize, and have it ready for pickup or delivery.",
+    content: [
+      { type: "title", value: "Dine-In Excellence" },
+      {
+        type: "paragraph",
+        value:
+          "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
+      },
+    ],
   },
   {
     id: 6,
@@ -40,6 +155,29 @@ const ServiceSectionData = [
     title: "Dine-In Excellence",
     paragraph:
       "Experience our dine-in: vibrant atmosphere, prompt service, and a comfortable setting awaits.",
+    content: [
+      { type: "title", value: "Dine-In Excellence" },
+      {
+        type: "paragraph",
+        value:
+          "Proud community members, engaging in initiatives that uplift neighbors. Your patronage matters.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Bold opacity scale polygon share edit link background move pixel. Library blur create reesizing object stroke strikethrough figma. Rectangle boolean list scrolling shadow star pencil boolean move plugin. Project opacity flows object italic vector rectangle link. Comment draft connection clip duplicate shadow horizontal flatten.Distribute comment reesizing connection community. Plugin device clip asset export ellipse library horizontal. Style text effect create opacity arrange italic export. Editor align editor inspect frame follower comment comment strikethrough edit.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Pixel ipsum vector union text rectangle figjam. Duplicate auto main community bold subtract opacity team. Rotate figjam layout edit pencil. Font flows figma team arrange subtract.Ellipse create fill clip select plugin flows underline. Union strikethrough variant pixel overflow opacity list shadow arrange. Ellipse bold invite ipsum prototype comment select auto outline. Team frame comment duplicate library. Underline list export list pen boolean vector star. Move bullet strikethrough link align scale style auto device overflow. Star community layout overflow pixel italic.",
+      },
+      {
+        type: "paragraph",
+        value:
+          "Variant editor italic editor rectangle vertical. List vector overflow mask selection fill device follower. Figma stroke subtract horizontal font ellipse undo. Invite team vertical pen select list. Invite distribute undo shadow italic font auto export shadow hand. Plugin invite list subtract inspect invite shadow editor flatten follower. Shadow arrange font group italic ellipse create fill create. Mask create community polygon flows team group bold. Flows bold reesizing.",
+      },
+    ],
   },
 ];
 

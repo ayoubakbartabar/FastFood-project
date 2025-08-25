@@ -10,7 +10,10 @@ export default function ServiceCard() {
   return (
     <>
       <Navbar />
-      <PageHeader />
+      <PageHeader title={"ABCD"} />
+      <section className="service-card-section">
+
+      </section>
       <FeedbackSupportSection />
       <SocialSection />
       <Footer />
