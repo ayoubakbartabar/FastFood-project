@@ -1,11 +1,19 @@
-import React from 'react'
-import './ServiceCard.css'
+import React from "react";
+import "./ServiceCard.css";
+import Navbar from "../../../../shared/Navbar/Navbar.jsx";
+import PageHeader from "../../../../shared/PageHeader/PageHeader.jsx";
+import FeedbackSupportSection from "../../../../shared/FeedbackSupportSection/FeedbackSupportSection.jsx";
+import SocialSection from "../../../../shared/SocialSection/SocialSection.jsx";
+import Footer from "../../../../shared/Footer/Footer.jsx";
 
 export default function ServiceCard() {
   return (
     <>
-    ServiceCard
-    
+      <Navbar />
+      <PageHeader />
+      <FeedbackSupportSection />
+      <SocialSection />
+      <Footer />
     </>
-  )
+  );
 }
