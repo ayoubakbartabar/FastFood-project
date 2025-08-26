@@ -24,9 +24,17 @@ export default function ServiceCard() {
         <div className="service-card-content">
           {service.content.map((item, idx) => {
             if (item.type === "title") {
-              return <h2 key={idx}>{item.value}</h2>;
+              return (
+                <h2 className="service-card-content-title" key={idx}>
+                  {item.value}
+                </h2>
+              );
             } else if (item.type === "paragraph") {
-              return <p key={idx}>{item.value}</p>;
+              return (
+                <p className="service-card-content-paragraph" key={idx}>
+                  {item.value}
+                </p>
+              );
             }
             return null;
           })}
