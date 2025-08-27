@@ -1,47 +1,85 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useReducer, useEffect, useMemo } from "react";
 
-// Create Context for Cart
+// Create Cart Context
 export const CartContext = createContext();
 
-export function CartProvider({ children }) {
-  // Load cart from localStorage or fallback to empty array
-  const [cart, setCart] = useState(() => {
-    const savedCart = localStorage.getItem("cart");
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+// Get initial cart from localStorage
+const initialState = () => {
+  const savedCart = localStorage.getItem("cart");
+  return savedCart ? JSON.parse(savedCart) : [];
+};
 
-  // Persist cart in localStorage whenever it changes
+// Reducer to handle cart actions
+function cartReducer(state, action) {
+  switch (action.type) {
+    case "ADD":
+      // Check if product already exists
+      const existing = state.find((item) => item.id === action.product.id);
+      if (existing) {
+        // Increase quantity if it exists
+        return state.map((item) =>
+          item.id === action.product.id
+            ? { ...item, quantity: item.quantity + action.quantity }
+            : item
+        );
+      } else {
+        // Add new product
+        return [...state, { ...action.product, quantity: action.quantity }];
+      }
+    case "UPDATE":
+      // Update quantity, remove if quantity <= 0
+      return state
+        .map((item) =>
+          item.id === action.id ? { ...item, quantity: action.quantity } : item
+        )
+        .filter((item) => item.quantity > 0);
+    case "REMOVE":
+      // Remove a product
+      return state.filter((item) => item.id !== action.id);
+    default:
+      return state;
+  }
+}
+
+export function CartProvider({ children }) {
+  const [cart, dispatch] = useReducer(cartReducer, [], initialState);
+
+  // Sync cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
-  // Add product to cart (if exists → increase quantity)
-  const addToCart = (product, quantity = 1) => {
-    setCart((prev) => {
-      const existing = prev.find((item) => item.id === product.id);
-      if (existing) {
-        return prev.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + quantity }
-            : item
-        );
-      } else {
-        return [...prev, { ...product, quantity }];
-      }
-    });
-  };
+  // Cart actions
+  const addToCart = (product, quantity = 1) =>
+    dispatch({ type: "ADD", product, quantity });
 
-  // Update quantity (if <= 0 → remove product)
-  const updateQuantity = (id, newQty) => {
-    setCart((prev) =>
-      prev
-        .map((item) => (item.id === id ? { ...item, quantity: newQty } : item))
-        .filter((item) => item.quantity > 0)
-    );
-  };
+  const updateQuantity = (id, quantity) =>
+    dispatch({ type: "UPDATE", id, quantity });
+
+  const removeFromCart = (id) => dispatch({ type: "REMOVE", id });
+
+  // Memoized values for total items and total price
+  const totalItems = useMemo(
+    () => cart.reduce((sum, item) => sum + item.quantity, 0),
+    [cart]
+  );
+
+  const totalPrice = useMemo(
+    () => cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [cart]
+  );
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, updateQuantity }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        addToCart,
+        updateQuantity,
+        removeFromCart,
+        totalItems,
+        totalPrice,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
