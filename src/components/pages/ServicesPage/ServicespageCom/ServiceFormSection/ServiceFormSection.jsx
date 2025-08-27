@@ -1,11 +1,14 @@
-import React from 'react';
-import './ServiceFormSection.css';
+import React from "react";
+import "./ServiceFormSection.css";
 
 export default function ServiceFormSection() {
   return (
     <div className="service-form-container">
       <h2>Get in touch</h2>
-      <p>Auto content inspect stroke opacity draft stroke invite. Rectangle frame export background clip image figjam image.</p>
+      <p>
+        Auto content inspect stroke opacity draft stroke invite. Rectangle frame
+        export background clip image figjam image.
+      </p>
       <form className="service-form">
         <div className="service-form-row">
           <div className="service-form-group">
