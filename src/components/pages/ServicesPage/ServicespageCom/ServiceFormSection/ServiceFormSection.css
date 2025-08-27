@@ -8,14 +8,14 @@
     font-family: var(--font-jost);
 }
 
-.service-form-container h2 {
+.service-form-title {
     margin-bottom: 10px;
     font-size: 24px;
     font-weight: 700;
     color: var(--heading);
 }
 
-.service-form-container p {
+.service-form-description {
     font-size: 14px;
     color: var(--paragraph);
     margin-bottom: 20px;
@@ -39,15 +39,15 @@
     flex-direction: column;
 }
 
-.service-form-group label {
+.service-form-label {
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: 500;
     color: var(--color-gray-dark);
 }
 
-.service-form-group input,
-.service-form-group textarea {
+.service-form-input,
+.service-form-textarea {
     padding: 10px;
     border: 1px solid var(--border);
     border-radius: 4px;
@@ -57,16 +57,18 @@
     color: var(--color-gray-dark);
 }
 
-textarea {
+.service-form-textarea {
     min-height: 100px;
 }
 
-.service-form-group input:focus,
-.service-form-group textarea:focus {
+.service-form-input:focus,
+.service-form-textarea:focus {
+    outline: none;
     border: 0.3px solid var(--color-primary);
+    box-shadow: none;
 }
 
-button {
+.service-form-button {
     padding: 12px;
     background-color: var(--highlight);
     border: none;
@@ -77,7 +79,7 @@ button {
     color: var(--color-black);
 }
 
-button:hover {
+.service-form-button:hover {
     background-color: var(--color-primary);
 }
 
