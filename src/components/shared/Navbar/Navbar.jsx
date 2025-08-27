@@ -6,7 +6,8 @@ import { IoCloseCircle } from "react-icons/io5";
 import "./Navbar.css";
 import OrderNowBtn from "../OrderNowBtn/OrderNowBtn";
 import ShoppingBasketSection from "../ShoppingBasketCom/ShoppingBasketSection";
-
+import { useContext } from "react";
+import { CartContext } from "../CartContext/CartContext";
 // Custom hook to detect clicks outside a given ref element
 function useClickOutside(ref, handler, whenActive = true) {
   useEffect(() => {
@@ -35,6 +36,9 @@ export default function Navbar() {
 
   const mobileMenuRef = useRef(null);
   const basketRef = useRef(null);
+  const { cart } = useContext(CartContext);
+
+  const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   const navbarMenus = [
     { id: 1, title: "Home", href: "/" },
@@ -148,6 +152,9 @@ export default function Navbar() {
             onClick={openBasket}
           >
             <LuShoppingBasket className="shop-basket-icon" />
+            {totalItems > 0 && (
+              <span className="basket-badge"></span>
+            )}
           </button>
 
           {/* Order now button (desktop only) */}

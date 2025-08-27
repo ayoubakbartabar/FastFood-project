@@ -77,12 +77,30 @@
     color: var(--text-color);
 }
 
+.shop-basket-btn {
+    position: relative;
+}
+
+.basket-badge {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background-color: var(--highlight);
+    font-weight: bold;
+    font-size: 12px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Basket slide-in panel */
 .basket-panel {
     position: fixed;
     top: 0;
     right: -600px;
-    /* Hidden by default */
     width: 500px;
     max-width: 90%;
     height: 100vh;
@@ -93,13 +111,11 @@
     flex-direction: column;
     padding: 20px;
     transition: right 0.3s ease-in-out;
-    /* Smooth slide animation */
     overflow-y: scroll;
 }
 
 .basket-panel.open {
     right: 0;
-    /* Slide in from right */
 }
 
 .basket-close-btn {
