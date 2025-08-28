@@ -14,6 +14,7 @@ import { CartProvider } from "../shared/CartContext/CartContext.jsx";
 import { BlogProvider } from "../shared/BlogContext/BlogContext.jsx";
 import BlogSection from "../pages/BlogPage/BlogPageCom/BlogSection/BlogSection.jsx";
 import BlogCategoriesSection from "../pages/BlogPage/BlogPageCom/BlogCategoriesSection/BlogCategoriesSection.jsx";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage.jsx";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             path="/blog/:type/:value"
             element={<BlogCategoriesSection />}
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BlogProvider>
     </CartProvider>
