@@ -45,22 +45,23 @@ export default function ShopAsideSection({
           <FaSearch />
         </button>
       </div>
-
-      <div className="shop-categories-box">
-        <h3 className="shop-categories-title">Categories</h3>
-        <ul className="shop-categories-list">
-          {categories.map((category, index) => (
-            <li
-              key={index}
-              className={`shop-category-item ${
-                selectedCategory === category ? "active" : ""
-              }`}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </li>
-          ))}
-        </ul>
+      <div className="shop-aside-container">
+        <div className="shop-categories-box">
+          <h3 className="shop-categories-title">Categories</h3>
+          <ul className="shop-categories-list">
+            {categories.map((category, index) => (
+              <li
+                key={index}
+                className={`shop-category-item ${
+                  selectedCategory === category ? "active" : ""
+                }`}
+                onClick={() => setSelectedCategory(category)}
+              >
+                {category}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </aside>
   );
