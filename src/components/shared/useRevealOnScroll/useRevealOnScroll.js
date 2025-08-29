@@ -1,29 +1,69 @@
 import { useEffect } from "react";
 
-// A custom hook to reveal elements with animation when scrolled into view
-export const useRevealOnScroll = (ref, selector, delay = 200) => {
+/**
+ * useRevealOnScroll
+ * A custom hook to reveal elements with animation when they enter the viewport.
+ *
+ * @param {React.RefObject} ref - Ref of the container element to observe
+ * @param {string} selector - CSS selector of child elements to animate
+ * @param {Object} options - Configuration object
+ * @param {number} options.delay - Stagger delay in milliseconds between items (default 200ms)
+ * @param {string} options.direction - Animation direction: "left", "right", "up", "down" (default "right")
+ * @param {number} options.threshold - IntersectionObserver threshold (default 0.2)
+ */
+export const useRevealOnScroll = (
+  ref,
+  selector,
+  { delay = 200, direction = "right", threshold = 0.2 } = {}
+) => {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        // Check if the section is visible in viewport
-        if (entries[0].isIntersecting) {
-          const items = ref.current.querySelectorAll(selector);
+    if (!ref.current) return;
 
-          // Add "show" class to each item with staggered delay
+    const items = ref.current.querySelectorAll(selector);
+
+    // Apply initial transform based on direction
+    items.forEach((item) => {
+      item.style.transition = "transform 0.6s ease, opacity 0.6s ease";
+      item.style.opacity = 0;
+      switch (direction) {
+        case "left":
+          item.style.transform = "translateX(-50px)";
+          break;
+        case "right":
+          item.style.transform = "translateX(50px)";
+          break;
+        case "up":
+          item.style.transform = "translateY(-50px)";
+          break;
+        case "down":
+          item.style.transform = "translateY(50px)";
+          break;
+        default:
+          item.style.transform = "translateX(50px)";
+      }
+    });
+
+    const observer = new IntersectionObserver(
+      (entries, observerInstance) => {
+        if (entries[0].isIntersecting) {
           items.forEach((item, index) => {
-            setTimeout(() => item.classList.add("show"), index * delay);
+            setTimeout(() => {
+              item.classList.add("show");
+              item.style.opacity = 1;
+              item.style.transform = "translateX(0) translateY(0)";
+            }, index * delay);
           });
 
-          // Disconnect observer after animation is triggered once
-          observer.disconnect();
+          // Stop observing after animation triggers once
+          observerInstance.disconnect();
         }
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold }
     );
 
     observer.observe(ref.current);
 
-    // Cleanup on component unmount
+    // Cleanup on unmount
     return () => observer.disconnect();
-  }, [ref, selector, delay]);
+  }, [ref, selector, delay, direction, threshold]);
 };
