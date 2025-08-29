@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import "./BlogsContentSection.css";
 import PopularPost from "../BlogAsideSection/BlogAsideData";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { useRevealOnScroll } from "../../../../shared/useRevealOnScroll/useRevealOnScroll"; 
 
 export default function BlogsContentSection() {
   const sectionRef = useRef(null);
@@ -12,26 +13,12 @@ export default function BlogsContentSection() {
     navigate(`/blog/${post.id}`, { state: { post } });
   };
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          const cards =
-            sectionRef.current.querySelectorAll(".blog-content-card");
-          cards.forEach((card, index) => {
-            setTimeout(() => {
-              card.classList.add("show");
-            }, index * 200);
-          });
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    observer.observe(sectionRef.current);
-    return () => observer.disconnect();
-  }, []);
+  // Reveal cards from right to left with stagger animation
+  useRevealOnScroll(sectionRef, ".blog-content-card", {
+    delay: 200,
+    direction: "right",
+    threshold: 0.2,
+  });
 
   return (
     <section className="blog-content-section" ref={sectionRef}>

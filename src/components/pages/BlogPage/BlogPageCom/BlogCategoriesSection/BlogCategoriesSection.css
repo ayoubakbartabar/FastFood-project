@@ -8,7 +8,7 @@
     justify-items: center;
 }
 
-/* Special case: if there's only 1 card, keep it centered with smaller width */
+/* Special case: when there's only 1 card, keep it centered */
 .blog-categories-section:has(.blog-categories-card:only-child) {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -23,23 +23,19 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-}
 
-/* Initial hidden state for blog cards */
-.blog-categories-card {
+    /* Initial hidden state */
     opacity: 0;
     transform: translateY(40px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
 }
 
-/* When the "show" class is applied, fade and slide up */
+/* Visible state after "show" class is added by Hook */
 .blog-categories-card.show {
     opacity: 1;
     transform: translateY(0);
 }
-
 
 .blog-categories-card:hover {
     transform: translateY(-8px);

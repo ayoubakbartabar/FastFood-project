@@ -14,18 +14,18 @@ export default function BlogCategoriesSection() {
   const location = useLocation();
   const { type, value } = useParams();
 
-  // Create a ref for the section container
+  // Ref for observing the section container
   const sectionRef = useRef(null);
 
-  // Trigger reveal animation on scroll for blog cards
+  // Custom Hook: Reveal animation on scroll for each blog card
   useRevealOnScroll(sectionRef, ".blog-categories-card", 200);
 
-  // Handle navigation to single blog post
+  // Navigate to single blog page
   const handleReadMore = (post) => {
     navigate(`/blog/${post.id}`, { state: { post } });
   };
 
-  // Detect whether we are filtering by category or tag
+  // Determine whether we are filtering by category or tag
   const category =
     location.state?.category || (type === "category" ? value : null);
   const tag = location.state?.tag || (type === "tags" ? value : null);
@@ -59,27 +59,35 @@ export default function BlogCategoriesSection() {
         <section className="blog-categories-section" ref={sectionRef}>
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => {
+              // Extract the first paragraph of the post
               const firstParagraph = post.content.find(
                 (item) => item.type === "paragraph"
               )?.text;
 
               return (
                 <div className="blog-categories-card" key={post.id}>
+                  {/* Post Image */}
                   <img
                     src={post.image}
                     alt={post.title}
                     className="blog-categories-image"
                   />
+
+                  {/* Post Content */}
                   <div className="blog-categories-content">
                     <span className="blog-categories-category">
                       {post.categories}
                     </span>
                     <h3 className="blog-categories-title">{post.title}</h3>
+
+                    {/* Post Preview Text */}
                     {firstParagraph && (
                       <p className="blog-categories-paragraph">
                         {firstParagraph}
                       </p>
                     )}
+
+                    {/* Read More Button */}
                     <button
                       className="blog-categories-read-more"
                       onClick={() => handleReadMore(post)}
@@ -98,6 +106,7 @@ export default function BlogCategoriesSection() {
           )}
         </section>
       </div>
+
       <SocialSection />
       <Footer />
     </>

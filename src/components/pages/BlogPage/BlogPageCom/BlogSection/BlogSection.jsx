@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "../../../../shared/Navbar/Navbar";
 import PageHeader from "../../../../shared/PageHeader/PageHeader";
 import SocialSection from "../../../../shared/SocialSection/SocialSection";
 import Footer from "../../../../shared/Footer/Footer";
-import "./BlogSection.css";
 import BlogAsideSection from "../BlogAsideSection/BlogAsideSection";
 import { FaFacebookF, FaTwitter, FaPinterestP } from "react-icons/fa";
+import { useRevealOnScroll } from "../../../../shared/useRevealOnScroll/useRevealOnScroll";
+import "./BlogSection.css";
 
 export default function BlogSection() {
   const location = useLocation();
   const post = location.state?.post;
+  const contentRef = useRef(null); // Ref for main content animation
 
   if (!post) return <p>Post not found</p>;
+
+  // Apply reveal animation from right to left
+  useRevealOnScroll(contentRef, ".reveal-item", {
+    delay: 150, // Stagger delay for each item
+    direction: "right", // Enter from right (will move to left)
+    threshold: 0.2,
+  });
 
   return (
     <section className="blog-section">
@@ -20,26 +29,29 @@ export default function BlogSection() {
       <PageHeader title={post.title} />
 
       <div className="blog-main-wrapper">
-        {/* Aside Section */}
         <div className="blog-aside-section">
           <BlogAsideSection />
         </div>
 
-        {/* Blog Content */}
-        <div className="blog-section-content">
-          <img src={post.image} alt={post.title} className="blog-main-image" />
-          <h2 className="blog-section-title">{post.title}</h2>
+        {/* Blog Content with reveal animation */}
+        <div className="blog-section-content" ref={contentRef}>
+          <img
+            src={post.image}
+            alt={post.title}
+            className="blog-main-image reveal-item"
+          />
+          <h2 className="blog-section-title reveal-item">{post.title}</h2>
 
           {post.content.map((block, index) => {
             if (block.type === "paragraph") {
               return (
-                <p key={index} className="blog-paragraph">
+                <p key={index} className="blog-paragraph reveal-item">
                   {block.text}
                 </p>
               );
             } else if (block.type === "title") {
               return (
-                <h2 key={index} className="blog-subtitle">
+                <h2 key={index} className="blog-subtitle reveal-item">
                   {block.text}
                 </h2>
               );
@@ -49,7 +61,7 @@ export default function BlogSection() {
                   key={index}
                   src="/image/661cabff491ead7e40ea57ec_image.png"
                   alt="blog related"
-                  className="blog-image"
+                  className="blog-image reveal-item"
                 />
               );
             }
@@ -57,7 +69,7 @@ export default function BlogSection() {
           })}
 
           {/* Footer Content */}
-          <div className="blog-section-content-footer">
+          <div className="blog-section-content-footer reveal-item">
             <div className="blog-section-content-tags">
               <h3>Tags:</h3>
               <div className="blog-tags-wrapper">
