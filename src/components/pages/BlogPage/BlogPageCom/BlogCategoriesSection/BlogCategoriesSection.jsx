@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./BlogCategoriesSection.css";
 import Navbar from "../../../../shared/Navbar/Navbar";
 import PageHeader from "../../../../shared/PageHeader/PageHeader";
@@ -7,31 +7,33 @@ import Footer from "../../../../shared/Footer/Footer";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import PopularPost from "../BlogAsideSection/BlogAsideData";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
+import { useRevealOnScroll } from "../../../../shared/useRevealOnScroll/useRevealOnScroll";
 
 export default function BlogCategoriesSection() {
   const navigate = useNavigate();
   const location = useLocation();
   const { type, value } = useParams();
 
+  // Create a ref for the section container
+  const sectionRef = useRef(null);
+
+  // Trigger reveal animation on scroll for blog cards
+  useRevealOnScroll(sectionRef, ".blog-categories-card", 200);
+
   // Handle navigation to single blog post
   const handleReadMore = (post) => {
     navigate(`/blog/${post.id}`, { state: { post } });
   };
 
-  /**
-   * Detect if this page is showing category or tag.
-   * Priority: state > URL params
-   */
+  // Detect whether we are filtering by category or tag
   const category =
     location.state?.category || (type === "category" ? value : null);
   const tag = location.state?.tag || (type === "tags" ? value : null);
 
   const pageType = category ? "category" : tag ? "tag" : null;
-
-  // If no type detected, show error
   if (!pageType) return <p>No category or tag provided.</p>;
 
-  // Filter posts
+  // Filter posts based on category or tag
   let filteredPosts = [];
   if (pageType === "category") {
     filteredPosts = PopularPost.filter(
@@ -53,10 +55,10 @@ export default function BlogCategoriesSection() {
       />
 
       <div className="blog-categories-bg">
-        <section className="blog-categories-section">
+        {/* Section container with ref for scroll observer */}
+        <section className="blog-categories-section" ref={sectionRef}>
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => {
-              // Extract first paragraph of post
               const firstParagraph = post.content.find(
                 (item) => item.type === "paragraph"
               )?.text;
