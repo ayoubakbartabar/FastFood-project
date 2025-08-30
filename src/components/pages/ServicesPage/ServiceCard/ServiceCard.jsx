@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Navbar from "../../../../shared/Navbar/Navbar.jsx";
-import PageHeader from "../../../../shared/PageHeader/PageHeader.jsx";
-import FeedbackSupportSection from "../FeedbackSupportSection/FeedbackSupportSection.jsx";
-import SocialSection from "../../../../shared/SocialSection/SocialSection.jsx";
-import Footer from "../../../../shared/Footer/Footer.jsx";
-import ServiceFormSection from "../ServiceFormSection/ServiceFormSection.jsx";
-import ServiceSectionData from "../ServiceSection/ServiceSectionData";
+import Navbar from "../../../shared/Navbar/Navbar.jsx";
+import PageHeader from "../../../shared/PageHeader/PageHeader.jsx";
+import FeedbackSupportSection from "../ServicesPageCom/FeedbackSupportSection/FeedbackSupportSection.jsx";
+import SocialSection from "../../../shared/SocialSection/SocialSection.jsx";
+import Footer from "../../../shared/Footer/Footer.jsx";
+import ServiceFormSection from "../ServicesPageCom/ServiceFormSection/ServiceFormSection.jsx";
+import ServiceSectionData from "../ServicesPageCom/ServiceSection/ServiceSectionData.js";
 import "./ServiceCard.css";
 
 export default function ServiceCard() {

@@ -7,7 +7,7 @@ import AboutPage from "../pages/AboutPage/AboutPage.jsx";
 import ShopPage from "../pages/ShopPage/ShopPage.jsx";
 import ServicesPage from "../pages/ServicesPage/ServicesPage.jsx";
 
-import ServiceCard from "../pages/ServicesPage/ServicesPageCom/ServiceCard/ServiceCard.jsx";
+import ServiceCard from "../pages/ServicesPage/ServiceCard/ServiceCard.jsx";
 
 import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 import MenuPage from "../pages/MenuPage/MenuPage.jsx";
@@ -31,19 +31,13 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/service" element={<ServicesPage />} />
-
-          {/* Dynamic service route with id */}
-          <Route path="/service/:id" element={<ServiceCard />} />
-
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
+
+          <Route path="/service/:id" element={<ServiceCard />} />
           <Route path="/product/:id" element={<ProductPage />} />
-
-          {/* Single blog detail page */}
           <Route path="/blog/:id" element={<BlogSection />} />
-
-          {/* Dynamic route for both categories and tags */}
           <Route
             path="/blog/:type/:value"
             element={<BlogCategoriesSection />}
