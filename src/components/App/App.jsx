@@ -6,7 +6,9 @@ import HomePage from "../pages/HomePage/HomePage.jsx";
 import AboutPage from "../pages/AboutPage/AboutPage.jsx";
 import ShopPage from "../pages/ShopPage/ShopPage.jsx";
 import ServicesPage from "../pages/ServicesPage/ServicesPage.jsx";
+
 import ServiceCard from "../pages/ServicesPage/ServicesPageCom/ServiceCard/ServiceCard.jsx";
+
 import BlogPage from "../pages/BlogPage/BlogPage.jsx";
 import MenuPage from "../pages/MenuPage/MenuPage.jsx";
 import ContactUsPage from "../pages/ContactUsPage/ContactUsPage.jsx";
