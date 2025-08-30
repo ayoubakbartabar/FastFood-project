@@ -24,11 +24,15 @@ function App() {
     <CartProvider>
       <BlogProvider>
         <Routes>
+          {/* Main pages */}
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/shop" element={<ShopPage />} />
           <Route path="/service" element={<ServicesPage />} />
-          <Route path="/service-card" element={<ServiceCard />} />
+
+          {/* Dynamic service route with id */}
+          <Route path="/service/:id" element={<ServiceCard />} />
+
           <Route path="/blogs" element={<BlogPage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
@@ -42,6 +46,7 @@ function App() {
             path="/blog/:type/:value"
             element={<BlogCategoriesSection />}
           />
+
           {/* 404 Not Found */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

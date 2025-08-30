@@ -1,37 +1,45 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "../../../../shared/Navbar/Navbar.jsx";
 import PageHeader from "../../../../shared/PageHeader/PageHeader.jsx";
 import FeedbackSupportSection from "../FeedbackSupportSection/FeedbackSupportSection.jsx";
 import SocialSection from "../../../../shared/SocialSection/SocialSection.jsx";
 import Footer from "../../../../shared/Footer/Footer.jsx";
 import ServiceFormSection from "../ServiceFormSection/ServiceFormSection.jsx";
+import ServiceSectionData from "../ServiceSection/ServiceSectionData";
 import "./ServiceCard.css";
 
 export default function ServiceCard() {
-  const location = useLocation();
-  const { service } = location.state || {};
+  const { id } = useParams(); // get service id from URL
+  const navigate = useNavigate();
 
+  // Find the service by ID
+  const service = ServiceSectionData.find((item) => String(item.id) === id);
+
+  // Redirect if service not found
   if (!service) {
-    return <p>No service data available.</p>;
+    navigate("/service");
+    return null;
   }
 
   return (
     <>
       <Navbar />
       <PageHeader title={service.title} />
+
       <section className="service-card-section">
         <div className="service-card-content">
-          {service.content.map((item, idx) => {
+          {/* Render service content dynamically */}
+          {service.content.map((item, index) => {
             if (item.type === "title") {
               return (
-                <h2 className="service-card-content-title" key={idx}>
+                <h2 className="service-card-content-title" key={index}>
                   {item.value}
                 </h2>
               );
             } else if (item.type === "paragraph") {
               return (
-                <p className="service-card-content-paragraph" key={idx}>
+                <p className="service-card-content-paragraph" key={index}>
                   {item.value}
                 </p>
               );
@@ -39,8 +47,11 @@ export default function ServiceCard() {
             return null;
           })}
         </div>
+
+        {/* Dynamic form section */}
         <ServiceFormSection service={service} />
       </section>
+
       <FeedbackSupportSection />
       <SocialSection />
       <Footer />

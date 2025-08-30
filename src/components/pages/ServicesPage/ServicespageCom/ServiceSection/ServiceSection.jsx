@@ -5,37 +5,40 @@ import "./ServiceSection.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
 export default function ServiceSection() {
-  const sectionRef = useRef(null); // Reference to the service section DOM element
-  const [visibleCards, setVisibleCards] = useState([]); // State to track which cards are visible
-  const navigate = useNavigate(); // React Router navigation hook
+  const sectionRef = useRef(null); // Reference to the section DOM
+  const [visibleCards, setVisibleCards] = useState([]); // Track visible cards
+  const navigate = useNavigate(); // Navigation hook
 
   useEffect(() => {
-    // Create an IntersectionObserver to detect when the section is in the viewport
+    // Intersection Observer for card reveal animation
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            // If the section is visible, reveal each card one by one with a delay
+            // Reveal cards one by one with delay
             ServiceSectionData.forEach((_, index) => {
               setTimeout(() => {
-                setVisibleCards((prev) => [...prev, index]);
-              }, index * 200); // 200ms delay between cards
+                setVisibleCards((prev) =>
+                  prev.includes(index) ? prev : [...prev, index]
+                );
+              }, index * 200);
             });
-            observer.unobserve(entry.target); // Stop observing after first trigger
+
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 } // Trigger when 20% of the section is visible
+      { threshold: 0.2 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current); // Start observing the section
+    if (sectionRef.current) observer.observe(sectionRef.current);
 
-    return () => observer.disconnect(); // Clean up the observer on component unmount
+    return () => observer.disconnect();
   }, []);
 
-  // Navigate to the ServiceCard page with the selected service data
-  const handleViewDetails = (service) => {
-    navigate("/service-card", { state: { service } });
+  // Navigate to service detail page by ID
+  const handleViewDetails = (id) => {
+    navigate(`/service/${id}`);
   };
 
   return (
@@ -44,10 +47,10 @@ export default function ServiceSection() {
         <div className="service-grid">
           {ServiceSectionData.map((item, index) => (
             <div
+              key={item.id}
               className={`service-card ${
                 visibleCards.includes(index) ? "show" : ""
               }`}
-              key={item.id}
             >
               <div className="service-icon">
                 <img src={item.image} alt={item.title} />
@@ -56,7 +59,7 @@ export default function ServiceSection() {
               <p className="service-paragraph">{item.paragraph}</p>
               <button
                 className="service-button"
-                onClick={() => handleViewDetails(item)}
+                onClick={() => handleViewDetails(item.id)} // pass id
               >
                 View Details <FaLongArrowAltRight />
               </button>
